@@ -8,10 +8,10 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
         * {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -22,6 +22,7 @@
             --text-primary: #ffffff;
             --text-secondary: #e2e8f0;
             --text-muted: #9ca3af;
+            --text-light: #ffffff;
             --border-color: rgba(6, 182, 212, 0.12);
             --glass-bg: rgba(20, 27, 45, 0.75);
             --glass-border: rgba(6, 182, 212, 0.12);
@@ -29,26 +30,121 @@
             --transition: all 0.3s ease;
         }
 
-        /* ✅ Light Mode - High Contrast (පැහැදිලි අකුරු) */
         [data-theme="light"] {
             --bg-primary: #ffffff;
             --bg-secondary: #f8fafc;
             --bg-card: rgba(255, 255, 255, 0.95);
-            --text-primary: #0f172a;     /* ඉතා තද නිල්-කළු */
-            --text-secondary: #1e293b;   /* තද නිල්-කළු */
-            --text-muted: #334155;       /* මධ්‍යම තද අළු */
+            --text-primary: #0f172a;
+            --text-secondary: #1e293b;
+            --text-muted: #475569;
+            --text-light: #0f172a;
             --border-color: rgba(6, 182, 212, 0.25);
             --glass-bg: rgba(255, 255, 255, 0.95);
             --glass-border: rgba(6, 182, 212, 0.25);
             --shadow: rgba(0, 0, 0, 0.1);
         }
 
+        [data-theme="light"] .text-white,
+        [data-theme="light"] .text-white\/\[0\.6\],
+        [data-theme="light"] .text-white\/\[0\.8\],
+        [data-theme="light"] .text-white\/\[0\.2\],
+        [data-theme="light"] .text-white\/60,
+        [data-theme="light"] .text-white\/80,
+        [data-theme="light"] .text-white\/20 {
+            color: #0f172a !important;
+        }
+
+        [data-theme="light"] .hero-text-white {
+            color: #0f172a !important;
+        }
+
+        [data-theme="light"] .text-white\/60 {
+            color: #475569 !important;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
             background: var(--bg-primary);
             color: var(--text-primary);
             transition: var(--transition);
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+        }
+
+        [data-theme="light"] a:not(.btn-primary):not(.btn-secondary):not(.social-link) {
+            color: #0e7490;
+        }
+        [data-theme="light"] a:not(.btn-primary):not(.btn-secondary):not(.social-link):hover {
+            color: #0a5c73;
+        }
+
+        /* ===== NAVBAR ACTIVE LINK ===== */
+        .nav-link-active {
+            color: var(--text-primary) !important;
+            font-weight: 600 !important;
+        }
+        .nav-link-active::after {
+            width: 100% !important;
+        }
+
+        /* Light Mode Active Link */
+        [data-theme="light"] .nav-link-active {
+            color: #0f172a !important;
+        }
+
+        /* Light Mode - Project Card Fix */
+        [data-theme="light"] .project-card h3 {
+            color: #0f172a !important;
+        }
+        [data-theme="light"] .project-card p {
+            color: #1e293b !important;
+        }
+        [data-theme="light"] .project-card .text-gray-400 {
+            color: #475569 !important;
+        }
+        [data-theme="light"] .project-card .text-gray-500 {
+            color: #64748b !important;
+        }
+        [data-theme="light"] .project-card .border-t {
+            border-color: rgba(6, 182, 212, 0.15) !important;
+        }
+
+        [data-theme="light"] .skill-tag {
+            color: #1e293b !important;
+            background: rgba(6, 182, 212, 0.08) !important;
+            border-color: rgba(6, 182, 212, 0.15) !important;
+        }
+
+        [data-theme="light"] .timeline-item h3 {
+            color: #0f172a !important;
+        }
+        [data-theme="light"] .timeline-item .text-cyan-300 {
+            color: #0e7490 !important;
+        }
+        [data-theme="light"] .timeline-item .text-gray-400 {
+            color: #475569 !important;
+        }
+
+        [data-theme="light"] .achievement-badge h4 {
+            color: #0f172a !important;
+        }
+        [data-theme="light"] .achievement-badge p {
+            color: #475569 !important;
+        }
+
+        [data-theme="light"] .glass h3 {
+            color: #0f172a !important;
+        }
+
+        [data-theme="light"] .text-gray-300 {
+            color: #1e293b !important;
+        }
+        [data-theme="light"] .text-gray-400 {
+            color: #475569 !important;
         }
 
         .gradient-bg {
@@ -182,6 +278,7 @@
             position: relative;
             color: var(--text-muted);
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .nav-link:hover {
@@ -351,16 +448,25 @@
             transform: translateY(-2px);
         }
 
-        @media (max-width: 768px) {
-            .floating-nav {
-                right: 12px;
-                bottom: 12px;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
-            .floating-nav a {
-                width: 36px;
-                height: 36px;
-                font-size: 13px;
-            }
+        }
+
+        .page-section {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding-top: 80px;
+        }
+        .page-section.active {
+            display: block;
         }
     </style>
 </head>
@@ -395,7 +501,7 @@
         };
 
         // ---- NAVBAR ----
-        const Navbar = ({ theme, toggleTheme }) => {
+        const Navbar = ({ theme, toggleTheme, currentView, setCurrentView, activeSection }) => {
             const [isOpen, setIsOpen] = useState(false);
             const [scrolled, setScrolled] = useState(false);
 
@@ -406,29 +512,59 @@
             }, []);
 
             const navLinks = [
-                { label: 'Home', href: '#home' },
-                { label: 'About', href: '#about' },
-                { label: 'Education', href: '#education' },
-                { label: 'Skills', href: '#skills' },
-                { label: 'Projects', href: '#projects' },
-                { label: 'Certifications', href: '#certifications' },
-                { label: 'Contact', href: '#contact' },
+                { label: 'Home', view: 'home' },
+                { label: 'About', view: 'about' },
+                { label: 'Education', view: 'education' },
+                { label: 'Skills', view: 'skills' },
+                { label: 'Projects', view: 'projects' },
+                { label: 'Certifications', view: 'certifications' },
+                { label: 'Contact', view: 'contact' },
             ];
+
+            const handleNavClick = (view) => {
+                if (view === 'projects') {
+                    setCurrentView('projects');
+                } else {
+                    setCurrentView('home');
+                    setTimeout(() => {
+                        const el = document.getElementById(view);
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+                setIsOpen(false);
+            };
+
+            // Determine which link is active
+            const isActive = (view) => {
+                if (currentView === 'projects') return view === 'projects';
+                return activeSection === view;
+            };
 
             return (
                 <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav' : 'bg-transparent'}`}>
                     <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-                        <a href="#home" className="text-2xl font-bold tracking-tight">
+                        <button onClick={() => handleNavClick('home')} className="text-2xl font-bold tracking-tight">
                             <span className="hero-gradient-text">Amila</span>
                             <span className="text-white/60 font-light">Vajira</span>
-                        </a>
+                        </button>
 
                         <div className="hidden md:flex items-center gap-6">
                             {navLinks.map((link) => (
-                                <a key={link.label} href={link.href} className="nav-link text-sm font-medium">{link.label}</a>
+                                <button
+                                    key={link.label}
+                                    onClick={() => handleNavClick(link.view)}
+                                    className={`nav-link text-sm font-medium ${isActive(link.view) ? 'nav-link-active' : ''}`}
+                                >
+                                    {link.label}
+                                </button>
                             ))}
                             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-                            <a href="#contact" className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold">Let's Talk</a>
+                            <button
+                                onClick={() => handleNavClick('contact')}
+                                className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold"
+                            >
+                                Let's Talk
+                            </button>
                         </div>
 
                         <div className="flex items-center gap-3 md:hidden">
@@ -442,463 +578,80 @@
                     <div className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="glass-nav px-6 py-4 flex flex-col gap-4 border-t border-white/5">
                             {navLinks.map((link) => (
-                                <a key={link.label} href={link.href} onClick={() => setIsOpen(false)} className="nav-link text-base font-medium py-1.5">
+                                <button
+                                    key={link.label}
+                                    onClick={() => handleNavClick(link.view)}
+                                    className={`nav-link text-base font-medium py-1.5 text-left ${isActive(link.view) ? 'nav-link-active' : ''}`}
+                                >
                                     {link.label}
-                                </a>
+                                </button>
                             ))}
-                            <a href="#contact" onClick={() => setIsOpen(false)} className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold text-center mt-1">
+                            <button
+                                onClick={() => handleNavClick('contact')}
+                                className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold text-center mt-1"
+                            >
                                 Let's Talk
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </nav>
             );
         };
 
-        // ---- HERO ----
-        const Hero = () => {
-            return (
-                <section id="home" className="min-h-screen flex items-center justify-center gradient-bg bg-grid-pattern pt-20">
-                    <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 w-full">
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
-                            <div className="order-2 md:order-1">
-                                <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6">
-                                    <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                                    <span className="text-sm text-cyan-300 font-medium">IS Undergraduate</span>
-                                </div>
+        // ---- PROJECTS DATA ----
+        const allProjects = [
+            {
+                title: 'Python Calculator',
+                desc: 'A simple calculator with GUI built using Python and Tkinter. Supports addition, subtraction, multiplication, division, and modulus operations with error handling.',
+                tech: ['Python', 'Tkinter', 'GUI'],
+                icon: 'fa-calculator',
+                link: 'https://github.com/Amila999-cell/python-calculator',
+                category: 'Development'
+            },
+            {
+                title: 'Student Performance Analytics',
+                desc: 'A dashboard to analyze student performance data and identify patterns using Python and Power BI.',
+                tech: ['Python', 'Power BI', 'Pandas'],
+                icon: 'fa-chart-simple',
+                link: '#',
+                category: 'Analytics'
+            },
+            {
+                title: 'University Event Management System',
+                desc: 'A web-based system to manage university events, registrations, and feedback.',
+                tech: ['Web Development', 'Database', 'UI/UX'],
+                icon: 'fa-calendar-check',
+                link: '#',
+                category: 'Development'
+            },
+            {
+                title: 'Data Visualization Dashboard',
+                desc: 'An interactive dashboard for businesses to visualize sales and customer data.',
+                tech: ['Power BI', 'Excel', 'Data Modeling'],
+                icon: 'fa-chart-line',
+                link: '#',
+                category: 'Analytics'
+            },
+            {
+                title: 'Inventory Management System',
+                desc: 'A simple inventory management system using Python and SQLite.',
+                tech: ['Python', 'SQLite', 'CRUD'],
+                icon: 'fa-cubes',
+                link: '#',
+                category: 'Development'
+            },
+            {
+                title: 'Market Research Analysis',
+                desc: 'Conducted market research analysis using survey data to identify customer preferences.',
+                tech: ['Excel', 'Survey Design', 'Reporting'],
+                icon: 'fa-magnifying-glass-chart',
+                link: '#',
+                category: 'Business Analysis'
+            },
+        ];
 
-                                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
-                                    <span className="text-white">Hi, I'm </span>
-                                    <span className="hero-gradient-text">Amila Vajira</span>
-                                    <span className="text-white">.</span>
-                                    <br />
-                                    <span className="hero-gradient-text">Aspiring Data Engineer & Business Analyst</span>
-                                </h1>
-
-                                <p className="text-gray-400 text-base sm:text-lg mt-5 max-w-lg leading-relaxed">
-                                    Information Systems undergraduate at Sabaragamuwa University.
-                                    Passionate about Data Engineering, Business Analysis & Analytics.
-                                </p>
-
-                                <div className="flex flex-wrap gap-4 mt-8">
-                                    <a href="#projects" className="btn-primary text-white px-7 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
-                                        View My Work <i className="fas fa-arrow-right text-xs"></i>
-                                    </a>
-                                    <a href="#contact" className="glass text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2 border border-white/10 hover:border-cyan-400/50 transition-all">
-                                        <i className="fas fa-paper-plane"></i> Let's Connect
-                                    </a>
-                                    <a href="#" className="btn-secondary text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2">
-                                        <i className="fas fa-download"></i> Resume
-                                    </a>
-                                </div>
-
-                                <div className="flex gap-4 mt-8">
-                                    <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
-                                        <i className="fab fa-github text-lg"></i>
-                                    </a>
-                                    <a href="https://linkedin.com" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
-                                        <i className="fab fa-linkedin-in text-lg"></i>
-                                    </a>
-                                    <a href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
-                                        <i className="fab fa-twitter text-lg"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="order-1 md:order-2 flex justify-center">
-                                <div className="relative">
-                                    <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl -z-10 scale-150 pulse-glow"></div>
-                                    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-cyan-500/30 shadow-2xl shadow-cyan-500/10 float-animation">
-                                        <div className="w-full h-full bg-gradient-to-br from-cyan-900/30 via-blue-900/20 to-indigo-900/30 flex items-center justify-center">
-                                            <div className="text-8xl sm:text-9xl text-white/20 font-light">👨‍🎓</div>
-                                        </div>
-                                        <div className="absolute inset-0 rounded-full border border-white/5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex justify-center mt-16 md:mt-20">
-                            <a href="#about" className="text-gray-500 hover:text-gray-300 transition-colors flex flex-col items-center gap-2 text-sm">
-                                <span>Scroll</span>
-                                <i className="fas fa-chevron-down animate-bounce text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ---- ABOUT ----
-        const About = () => {
-            return (
-                <section id="about" className="py-20 md:py-28 gradient-bg bg-grid-pattern">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <div className="flex flex-col md:flex-row gap-12 md:gap-20 items-center">
-                            <div className="md:w-5/12">
-                                <div className="relative">
-                                    <div className="absolute -top-6 -left-6 w-24 h-24 border border-cyan-500/20 rounded-xl"></div>
-                                    <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-blue-500/20 rounded-xl"></div>
-                                    <div className="relative glass rounded-2xl p-6 border border-cyan-500/10 overflow-hidden">
-                                        <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-cyan-900/20 via-blue-900/10 to-indigo-900/20 flex items-center justify-center">
-                                            <div className="text-7xl opacity-30">📊</div>
-                                        </div>
-                                        <div className="absolute bottom-4 right-4 glass px-3 py-1.5 rounded-full border border-cyan-500/20 text-xs text-white/60">
-                                            <i className="fas fa-rocket mr-1.5 text-cyan-400"></i> Data Enthusiast
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="md:w-7/12">
-                                <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">About Me</span>
-                                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                    Information Systems <br className="hidden sm:block" />
-                                    <span className="hero-gradient-text">Undergraduate</span>
-                                </h2>
-                                <p className="text-gray-400 text-base leading-relaxed mt-5">
-                                    I'm an Information Systems undergraduate at Sabaragamuwa University of Sri Lanka.
-                                    I completed my A/Ls in the Physical Science stream, which gave me a strong 
-                                    foundation in analytical thinking and problem-solving.
-                                </p>
-                                <p className="text-gray-400 text-base leading-relaxed mt-3">
-                                    I'm passionate about Data Engineering, Business Analysis, and Analytics. 
-                                    I'm continuously learning and building my skills in data processing, analytics, 
-                                    and business intelligence. My goal is to become a skilled professional who bridges 
-                                    the gap between raw data and actionable business insights.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ---- EDUCATION ----
-        const Education = () => {
-            const educationData = [
-                {
-                    year: '2026 - Present',
-                    title: 'BSc (Hons) in Information Systems',
-                    institution: 'Sabaragamuwa University of Sri Lanka',
-                    description: 'Focus on Information Systems, Data Engineering, and Business Analysis.',
-                    icon: 'fa-graduation-cap'
-                },
-            ];
-
-            return (
-                <section id="education" className="py-20 md:py-28 gradient-bg bg-grid-pattern">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <div className="text-center max-w-2xl mx-auto mb-14">
-                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Education</span>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                My <span className="hero-gradient-text">Journey</span>
-                            </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Academic background and qualifications.</p>
-                        </div>
-
-                        <div className="max-w-3xl mx-auto space-y-6">
-                            {educationData.map((item, index) => (
-                                <div key={index} className="timeline-item glass rounded-2xl p-6 border border-cyan-500/10">
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                                                <i className={`fas ${item.icon}`}></i>
-                                            </div>
-                                            <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                                        </div>
-                                        <span className="text-sm text-cyan-400 font-medium">{item.year}</span>
-                                    </div>
-                                    <p className="text-cyan-300 text-sm font-medium ml-12 sm:ml-0">{item.institution}</p>
-                                    <p className="text-gray-400 text-sm ml-12 sm:ml-0 mt-1">{item.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ---- SKILLS ----
-        const Skills = () => {
-            const skillCategories = [
-                {
-                    title: 'Data Engineering (Learning)',
-                    icon: 'fa-database',
-                    skills: ['Python', 'SQL', 'ETL', 'Data Warehousing', 'Pandas', 'NumPy'],
-                },
-                {
-                    title: 'Business Analysis (Learning)',
-                    icon: 'fa-chart-line',
-                    skills: ['Requirements Gathering', 'Process Modeling', 'SWOT Analysis', 'Agile', 'JIRA'],
-                },
-                {
-                    title: 'Analytics & Visualization',
-                    icon: 'fa-chart-pie',
-                    skills: ['Power BI', 'Tableau', 'Excel', 'Data Visualization', 'Matplotlib', 'Seaborn'],
-                },
-                {
-                    title: 'Tools & Technologies',
-                    icon: 'fa-code',
-                    skills: ['Git', 'VS Code', 'MySQL', 'PostgreSQL', 'Linux', 'Docker'],
-                },
-            ];
-
-            return (
-                <section id="skills" className="py-20 md:py-28 gradient-bg">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <div className="text-center max-w-2xl mx-auto mb-14">
-                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Skills</span>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                My <span className="hero-gradient-text">Learning Path</span>
-                            </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">
-                                Tools and technologies I'm currently learning for Data Engineering & Business Analysis.
-                            </p>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {skillCategories.map((cat) => (
-                                <div key={cat.title} className="glass rounded-2xl p-6 border border-cyan-500/10 hover:border-cyan-500/30 transition-all duration-300">
-                                    <div className="flex items-center gap-3 mb-5">
-                                        <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                                            <i className={`fas ${cat.icon} text-lg`}></i>
-                                        </div>
-                                        <h3 className="text-lg font-semibold text-white">{cat.title}</h3>
-                                    </div>
-                                    <div className="flex flex-wrap gap-2.5">
-                                        {cat.skills.map((skill) => (
-                                            <span key={skill} className="skill-tag text-sm px-4 py-2 rounded-full">{skill}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="mt-10 flex flex-wrap justify-center gap-3 opacity-70">
-                            {['Python', 'SQL', 'Pandas', 'NumPy', 'Matplotlib', 'Power BI', 'Excel', 'ETL', 'Data Warehousing', 'Analytics'].map((s) => (
-                                <span key={s} className="text-sm text-gray-500 bg-white/5 px-4 py-1.5 rounded-full border border-cyan-500/10">{s}</span>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ---- CERTIFICATIONS ----
-        const Certifications = () => {
-            const certs = [
-                {
-                    title: 'Google Data Analytics Professional Certificate',
-                    status: 'Planned',
-                    icon: 'fa-google',
-                    field: 'Data Analysis'
-                },
-                {
-                    title: 'IBM Data Engineering Professional Certificate',
-                    status: 'Planned',
-                    icon: 'fa-ibm',
-                    field: 'Data Engineering'
-                },
-                {
-                    title: 'ECBA - Entry Certificate in Business Analysis',
-                    status: 'Planned',
-                    icon: 'fa-building',
-                    field: 'Business Analysis'
-                },
-            ];
-
-            return (
-                <section id="certifications" className="py-20 md:py-28 gradient-bg bg-grid-pattern">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <div className="text-center max-w-2xl mx-auto mb-14">
-                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Certifications</span>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                Planned <span className="hero-gradient-text">Certifications</span>
-                            </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">
-                                Certifications I plan to pursue in Data Analysis, Data Engineering & Business Analysis.
-                            </p>
-                        </div>
-
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {certs.map((cert) => (
-                                <div key={cert.title} className="glass rounded-2xl p-6 border border-cyan-500/10 text-center hover:border-cyan-500/30 transition-all">
-                                    <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-4">
-                                        <i className={`fab ${cert.icon}`}></i>
-                                    </div>
-                                    <h3 className="text-sm font-semibold text-white">{cert.title}</h3>
-                                    <span className="text-xs mt-2 inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                                        {cert.field}
-                                    </span>
-                                    <div className="mt-3">
-                                        <span className="text-xs inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-                                            Planned
-                                        </span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ---- PROJECTS ----
-        const Projects = () => {
-            const [showAll, setShowAll] = useState(false);
-
-            const allProjects = [
-                {
-                    title: 'Python Calculator',
-                    desc: 'A simple calculator with GUI built using Python and Tkinter.',
-                    tech: ['Python', 'Tkinter', 'GUI'],
-                    icon: 'fa-calculator',
-                    link: 'https://github.com/Amila999-cell/python-calculator',
-                    category: 'Development'
-                },
-                {
-                    title: 'Student Performance Analytics',
-                    desc: 'Analyzing student performance data using Python and Power BI.',
-                    tech: ['Python', 'Power BI', 'Pandas'],
-                    icon: 'fa-chart-simple',
-                    link: '#',
-                    category: 'Analytics'
-                },
-                {
-                    title: 'University Event Management System',
-                    desc: 'A web-based system to manage university events and registrations.',
-                    tech: ['Web Development', 'Database', 'UI/UX'],
-                    icon: 'fa-calendar-check',
-                    link: '#',
-                    category: 'Development'
-                },
-                {
-                    title: 'Data Visualization Dashboard',
-                    desc: 'Interactive dashboard for visualizing business sales data.',
-                    tech: ['Power BI', 'Excel', 'Data Modeling'],
-                    icon: 'fa-chart-line',
-                    link: '#',
-                    category: 'Analytics'
-                },
-                {
-                    title: 'Inventory Management System',
-                    desc: 'A simple inventory management system using Python and SQLite.',
-                    tech: ['Python', 'SQLite', 'CRUD'],
-                    icon: 'fa-cubes',
-                    link: '#',
-                    category: 'Development'
-                },
-                {
-                    title: 'Market Research Analysis',
-                    desc: 'Analyzing survey data to identify customer preferences.',
-                    tech: ['Excel', 'Survey Design', 'Reporting'],
-                    icon: 'fa-magnifying-glass-chart',
-                    link: '#',
-                    category: 'Business Analysis'
-                },
-            ];
-
-            const visibleProjects = showAll ? allProjects : allProjects.slice(0, 3);
-
-            return (
-                <section id="projects" className="py-20 md:py-28 gradient-bg bg-grid-pattern">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <div className="text-center max-w-2xl mx-auto mb-14">
-                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Portfolio</span>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                My <span className="hero-gradient-text">Projects</span>
-                            </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Academic and personal projects showcasing my learning journey.</p>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center gap-2 mb-8">
-                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">All</span>
-                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">Analytics</span>
-                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">Development</span>
-                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">Business Analysis</span>
-                        </div>
-
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {visibleProjects.map((p) => (
-                                <div key={p.title} className="project-card rounded-2xl p-6 group">
-                                    <div className="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center text-cyan-400 text-xl mb-4">
-                                        <i className={`fas ${p.icon}`}></i>
-                                    </div>
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{p.title}</h3>
-                                        <span className="text-xs bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/20">{p.category}</span>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed mt-2">{p.desc}</p>
-                                    <div className="flex flex-wrap gap-2 mt-4">
-                                        {p.tech.map((t) => (
-                                            <span key={t} className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-cyan-500/10">{t}</span>
-                                        ))}
-                                    </div>
-                                    <div className="mt-5 pt-4 border-t border-cyan-500/10 flex justify-between items-center">
-                                        <span className="text-xs text-gray-500">
-                                            {p.link && p.link !== '#' ? (
-                                                <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-                                                    <i className="fab fa-github mr-1"></i> View on GitHub
-                                                </a>
-                                            ) : 'Coming Soon'}
-                                        </span>
-                                        {p.link && p.link !== '#' && (
-                                            <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
-                                                <i className="fas fa-arrow-right"></i>
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="text-center mt-10">
-                            <button onClick={() => setShowAll(!showAll)} className="inline-flex items-center gap-2 text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 px-6 py-3 rounded-full transition-all text-sm font-medium bg-transparent hover:bg-cyan-500/10">
-                                {showAll ? <>See Less <i className="fas fa-chevron-up text-xs"></i></> : <>See More <i className="fas fa-chevron-down text-xs"></i></>}
-                            </button>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ---- ACHIEVEMENTS ----
-        const Achievements = () => {
-            const achievements = [
-                { title: 'A/L Physical Science', desc: 'Completed A/L in Physical Science stream (2024)', icon: 'fa-graduation-cap' },
-                { title: 'Volunteer', desc: 'Volunteered for School Tech Events', icon: 'fa-hand-holding-heart' },
-            ];
-
-            return (
-                <section className="py-20 md:py-28 gradient-bg bg-grid-pattern">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <div className="text-center max-w-2xl mx-auto mb-14">
-                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Achievements</span>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                Beyond <span className="hero-gradient-text">Academics</span>
-                            </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Extracurricular activities and achievements.</p>
-                        </div>
-
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-2xl mx-auto gap-6">
-                            {achievements.map((item) => (
-                                <div key={item.title} className="achievement-badge rounded-2xl p-6 text-center">
-                                    <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-3">
-                                        <i className={`fas ${item.icon}`}></i>
-                                    </div>
-                                    <h4 className="font-semibold text-white text-sm">{item.title}</h4>
-                                    <p className="text-xs text-gray-400 mt-1">{item.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ---- CONTACT ----
-        const Contact = () => {
+        // ---- CONTACT FORM ----
+        const ContactForm = () => {
             const [formData, setFormData] = useState({ name: '', email: '', message: '' });
             const [loading, setLoading] = useState(false);
             const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
@@ -945,90 +698,489 @@
             };
 
             return (
-                <section id="contact" className="py-20 md:py-28 gradient-bg">
-                    <div className="max-w-5xl mx-auto px-6">
-                        <Toast message={toast.message} type={toast.type} show={toast.show} />
-
-                        <div className="text-center max-w-2xl mx-auto mb-14">
-                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Contact</span>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                Let's <span className="hero-gradient-text">Connect</span>
-                            </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Have a project in mind? Let's talk about data, analytics, and business solutions.</p>
-                        </div>
-
-                        <div className="glass rounded-2xl p-6 md:p-10 border border-cyan-500/10">
-                            <div className="grid md:grid-cols-5 gap-8">
-                                <div className="md:col-span-2 space-y-6">
-                                    <div>
-                                        <h3 className="text-white font-semibold text-lg">Get in touch</h3>
-                                        <p className="text-gray-400 text-sm mt-1 leading-relaxed">
-                                            I'm open to data engineering projects, business analysis opportunities, and collaborations.
-                                        </p>
+                <>
+                    <Toast message={toast.message} type={toast.type} show={toast.show} />
+                    <div className="grid md:grid-cols-5 gap-8">
+                        <div className="md:col-span-2 space-y-6">
+                            <div>
+                                <h3 className="text-white font-semibold text-lg">Get in touch</h3>
+                                <p className="text-gray-400 text-sm mt-1 leading-relaxed">
+                                    I'm open to data engineering projects, business analysis opportunities, and collaborations.
+                                </p>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4 text-gray-300 text-sm">
+                                    <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                        <i className="fas fa-envelope"></i>
                                     </div>
-
-                                    <div className="space-y-4">
-                                        <div className="flex items-center gap-4 text-gray-300 text-sm">
-                                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                                                <i className="fas fa-envelope"></i>
-                                            </div>
-                                            <span>amilawajira24@gmail.com</span>
-                                        </div>
-                                        <div className="flex items-center gap-4 text-gray-300 text-sm">
-                                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                                                <i className="fas fa-map-marker-alt"></i>
-                                            </div>
-                                            <span>Nuwaraeliya, Sri Lanka</span>
-                                        </div>
-                                        <div className="flex items-center gap-4 text-gray-300 text-sm">
-                                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                                                <i className="fab fa-telegram-plane"></i>
-                                            </div>
-                                            <span>@amila_vajira</span>
-                                        </div>
-                                        <div className="flex items-center gap-4 text-gray-300 text-sm">
-                                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                                                <i className="fas fa-graduation-cap"></i>
-                                            </div>
-                                            <span>Information Systems Undergraduate</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex gap-3 pt-2">
-                                        <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                        <a href="https://linkedin.com" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
-                                            <i className="fab fa-linkedin-in"></i>
-                                        </a>
-                                        <a href="#" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
-                                            <i className="fab fa-twitter"></i>
-                                        </a>
-                                    </div>
+                                    <span>amilawajira24@gmail.com</span>
                                 </div>
-
-                                <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4">
-                                    <div>
-                                        <label className="text-sm text-gray-300 font-medium block mb-1.5">Your Name</label>
-                                        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="input-field w-full px-4 py-3 rounded-xl text-sm" required />
+                                <div className="flex items-center gap-4 text-gray-300 text-sm">
+                                    <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                        <i className="fas fa-map-marker-alt"></i>
                                     </div>
-                                    <div>
-                                        <label className="text-sm text-gray-300 font-medium block mb-1.5">Email Address</label>
-                                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="input-field w-full px-4 py-3 rounded-xl text-sm" required />
+                                    <span>Nuwaraeliya, Sri Lanka</span>
+                                </div>
+                                <div className="flex items-center gap-4 text-gray-300 text-sm">
+                                    <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                        <i className="fab fa-telegram-plane"></i>
                                     </div>
-                                    <div>
-                                        <label className="text-sm text-gray-300 font-medium block mb-1.5">Message</label>
-                                        <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project..." rows="4" className="input-field w-full px-4 py-3 rounded-xl text-sm resize-none" required></textarea>
+                                    <span>@amila_vajira</span>
+                                </div>
+                                <div className="flex items-center gap-4 text-gray-300 text-sm">
+                                    <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                        <i className="fas fa-graduation-cap"></i>
                                     </div>
-                                    <button type="submit" disabled={loading} className={`btn-primary text-white px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto inline-flex items-center justify-center gap-2 transition-all ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}>
-                                        {loading ? <><span className="spinner"></span> Sending...</> : <>Send Message <i className="fas fa-paper-plane text-xs"></i></>}
-                                    </button>
-                                    <p className="text-xs text-gray-500 mt-2"><i className="fas fa-envelope text-cyan-400 mr-1"></i> I'll reply to your email address</p>
-                                </form>
+                                    <span>Information Systems Undergraduate</span>
+                                </div>
+                            </div>
+                            <div className="flex gap-3 pt-2">
+                                <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
+                                    <i className="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/amila-vajira" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
+                                    <i className="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
+                                    <i className="fab fa-twitter"></i>
+                                </a>
                             </div>
                         </div>
+                        <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4">
+                            <div>
+                                <label className="text-sm text-gray-300 font-medium block mb-1.5">Your Name</label>
+                                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="input-field w-full px-4 py-3 rounded-xl text-sm" required />
+                            </div>
+                            <div>
+                                <label className="text-sm text-gray-300 font-medium block mb-1.5">Email Address</label>
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="input-field w-full px-4 py-3 rounded-xl text-sm" required />
+                            </div>
+                            <div>
+                                <label className="text-sm text-gray-300 font-medium block mb-1.5">Message</label>
+                                <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project..." rows="4" className="input-field w-full px-4 py-3 rounded-xl text-sm resize-none" required></textarea>
+                            </div>
+                            <button type="submit" disabled={loading} className={`btn-primary text-white px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto inline-flex items-center justify-center gap-2 transition-all ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                                {loading ? <><span className="spinner"></span> Sending...</> : <>Send Message <i className="fas fa-paper-plane text-xs"></i></>}
+                            </button>
+                            <p className="text-xs text-gray-500 mt-2"><i className="fas fa-envelope text-cyan-400 mr-1"></i> I'll reply to your email address</p>
+                        </form>
                     </div>
-                </section>
+                </>
+            );
+        };
+
+        // ---- HOME PAGE (with Scroll Detection for Navbar Highlight) ----
+        const HomePage = ({ setCurrentView, onSectionChange }) => {
+            const visibleProjects = allProjects.slice(0, 3);
+            const [activeSection, setActiveSection] = useState('home');
+            const isScrollingRef = useRef(false);
+
+            // Scroll detection for navbar active link
+            useEffect(() => {
+                const sectionIds = ['home', 'about', 'education', 'skills', 'projects-home', 'certifications', 'achievements', 'contact'];
+                
+                const handleScroll = () => {
+                    if (isScrollingRef.current) return;
+                    
+                    const scrollY = window.scrollY + 120; // offset for navbar
+                    
+                    for (const id of sectionIds) {
+                        const el = document.getElementById(id);
+                        if (el) {
+                            const rect = el.getBoundingClientRect();
+                            // Check if section is in view
+                            if (rect.top <= 180 && rect.bottom > 180) {
+                                let view = id === 'projects-home' ? 'projects' : id;
+                                if (view !== activeSection) {
+                                    setActiveSection(view);
+                                    onSectionChange(view);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll);
+                // Initial check
+                setTimeout(handleScroll, 100);
+                
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, [activeSection, onSectionChange]);
+
+            return (
+                <div className="gradient-bg bg-grid-pattern">
+                    <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+
+                        {/* HERO */}
+                        <section id="home" className="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
+                            <div className="order-2 md:order-1">
+                                <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6">
+                                    <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                                    <span className="text-sm text-cyan-300 font-medium">IS Undergraduate</span>
+                                </div>
+                                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+                                    <span className="hero-text-white">Hi, I'm </span>
+                                    <span className="hero-gradient-text">Amila Vajira</span>
+                                    <span className="hero-text-white">.</span>
+                                    <br />
+                                    <span className="hero-gradient-text">Aspiring Data Engineer & Business Analyst</span>
+                                </h1>
+                                <p className="text-gray-400 text-base sm:text-lg mt-5 max-w-lg leading-relaxed">
+                                    Information Systems undergraduate at Sabaragamuwa University.
+                                    Passionate about Data Engineering, Business Analysis & Analytics.
+                                </p>
+                                <div className="flex flex-wrap gap-4 mt-8">
+                                    <button onClick={() => setCurrentView('projects')} className="btn-primary text-white px-7 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
+                                        View My Work <i className="fas fa-arrow-right text-xs"></i>
+                                    </button>
+                                    <button onClick={() => setCurrentView('contact')} className="glass text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2 border border-white/10 hover:border-cyan-400/50 transition-all">
+                                        <i className="fas fa-paper-plane"></i> Let's Connect
+                                    </button>
+                                    <a href="#" className="btn-secondary text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2">
+                                        <i className="fas fa-download"></i> Resume
+                                    </a>
+                                </div>
+                                <div className="flex gap-4 mt-8">
+                                    <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
+                                        <i className="fab fa-github text-lg"></i>
+                                    </a>
+                                    <a href="https://linkedin.com/in/amila-vajira" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
+                                        <i className="fab fa-linkedin-in text-lg"></i>
+                                    </a>
+                                    <a href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
+                                        <i className="fab fa-twitter text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="order-1 md:order-2 flex justify-center">
+                                <div className="relative">
+                                    <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl -z-10 scale-150 pulse-glow"></div>
+                                    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-cyan-500/30 shadow-2xl shadow-cyan-500/10 float-animation">
+                                        <div className="w-full h-full bg-gradient-to-br from-cyan-900/30 via-blue-900/20 to-indigo-900/30 flex items-center justify-center">
+                                            <div className="text-8xl sm:text-9xl text-white/20 font-light">👨‍🎓</div>
+                                        </div>
+                                        <div className="absolute inset-0 rounded-full border border-white/5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* ABOUT */}
+                        <section id="about" className="py-20 md:py-28 flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+                            <div className="md:w-5/12">
+                                <div className="relative">
+                                    <div className="absolute -top-6 -left-6 w-24 h-24 border border-cyan-500/20 rounded-xl"></div>
+                                    <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-blue-500/20 rounded-xl"></div>
+                                    <div className="relative glass rounded-2xl p-6 border border-cyan-500/10 overflow-hidden">
+                                        <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-cyan-900/20 via-blue-900/10 to-indigo-900/20 flex items-center justify-center">
+                                            <div className="text-7xl opacity-30">📊</div>
+                                        </div>
+                                        <div className="absolute bottom-4 right-4 glass px-3 py-1.5 rounded-full border border-cyan-500/20 text-xs text-white/60">
+                                            <i className="fas fa-rocket mr-1.5 text-cyan-400"></i> Data Enthusiast
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:w-7/12">
+                                <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">About Me</span>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                    Information Systems <br className="hidden sm:block" />
+                                    <span className="hero-gradient-text">Undergraduate</span>
+                                </h2>
+                                <p className="text-gray-400 text-base leading-relaxed mt-5">
+                                    I'm an Information Systems undergraduate at Sabaragamuwa University of Sri Lanka.
+                                    I completed my A/Ls in the Physical Science stream, which gave me a strong 
+                                    foundation in analytical thinking and problem-solving.
+                                </p>
+                                <p className="text-gray-400 text-base leading-relaxed mt-3">
+                                    I'm passionate about Data Engineering, Business Analysis, and Analytics. 
+                                    I'm continuously learning and building my skills in data processing, analytics, 
+                                    and business intelligence. My goal is to become a skilled professional who bridges 
+                                    the gap between raw data and actionable business insights.
+                                </p>
+                            </div>
+                        </section>
+
+                        {/* EDUCATION */}
+                        <section id="education" className="py-20 md:py-28">
+                            <div className="text-center max-w-2xl mx-auto mb-14">
+                                <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Education</span>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                    My <span className="hero-gradient-text">Journey</span>
+                                </h2>
+                                <p className="text-gray-400 text-base mt-4 leading-relaxed">Academic background and qualifications.</p>
+                            </div>
+                            <div className="max-w-3xl mx-auto space-y-6">
+                                {[
+                                    {
+                                        year: '2026 - Present',
+                                        title: 'BSc (Hons) in Information Systems',
+                                        institution: 'Sabaragamuwa University of Sri Lanka',
+                                        description: 'Focus on Information Systems, Data Engineering, and Business Analysis.',
+                                        icon: 'fa-graduation-cap'
+                                    }
+                                ].map((item, index) => (
+                                    <div key={index} className="timeline-item glass rounded-2xl p-6 border border-cyan-500/10">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                                    <i className={`fas ${item.icon}`}></i>
+                                                </div>
+                                                <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                                            </div>
+                                            <span className="text-sm text-cyan-400 font-medium">{item.year}</span>
+                                        </div>
+                                        <p className="text-cyan-300 text-sm font-medium ml-12 sm:ml-0">{item.institution}</p>
+                                        <p className="text-gray-400 text-sm ml-12 sm:ml-0 mt-1">{item.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* SKILLS */}
+                        <section id="skills" className="py-20 md:py-28">
+                            <div className="text-center max-w-2xl mx-auto mb-14">
+                                <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Skills</span>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                    My <span className="hero-gradient-text">Learning Path</span>
+                                </h2>
+                                <p className="text-gray-400 text-base mt-4 leading-relaxed">
+                                    Tools and technologies I'm currently learning for Data Engineering & Business Analysis.
+                                </p>
+                            </div>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {[
+                                    {
+                                        title: 'Data Engineering (Learning)',
+                                        icon: 'fa-database',
+                                        skills: ['Python', 'SQL', 'ETL', 'Data Warehousing', 'Pandas', 'NumPy']
+                                    },
+                                    {
+                                        title: 'Business Analysis (Learning)',
+                                        icon: 'fa-chart-line',
+                                        skills: ['Requirements Gathering', 'Process Modeling', 'SWOT Analysis', 'Agile', 'JIRA']
+                                    },
+                                    {
+                                        title: 'Analytics & Visualization',
+                                        icon: 'fa-chart-pie',
+                                        skills: ['Power BI', 'Tableau', 'Excel', 'Data Visualization', 'Matplotlib', 'Seaborn']
+                                    },
+                                    {
+                                        title: 'Tools & Technologies',
+                                        icon: 'fa-code',
+                                        skills: ['Git', 'VS Code', 'MySQL', 'PostgreSQL', 'Linux', 'Docker']
+                                    }
+                                ].map((cat) => (
+                                    <div key={cat.title} className="glass rounded-2xl p-6 border border-cyan-500/10 hover:border-cyan-500/30 transition-all duration-300">
+                                        <div className="flex items-center gap-3 mb-5">
+                                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                                <i className={`fas ${cat.icon} text-lg`}></i>
+                                            </div>
+                                            <h3 className="text-lg font-semibold text-white">{cat.title}</h3>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2.5">
+                                            {cat.skills.map((skill) => (
+                                                <span key={skill} className="skill-tag text-sm px-4 py-2 rounded-full">{skill}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="mt-10 flex flex-wrap justify-center gap-3 opacity-70">
+                                {['Python', 'SQL', 'Pandas', 'NumPy', 'Matplotlib', 'Power BI', 'Excel', 'ETL', 'Data Warehousing', 'Analytics'].map((s) => (
+                                    <span key={s} className="text-sm text-gray-500 bg-white/5 px-4 py-1.5 rounded-full border border-cyan-500/10">{s}</span>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* PROJECTS SECTION (Home) */}
+                        <section id="projects-home" className="py-20 md:py-28">
+                            <div className="text-center max-w-2xl mx-auto mb-14">
+                                <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Portfolio</span>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                    My <span className="hero-gradient-text">Projects</span>
+                                </h2>
+                                <p className="text-gray-400 text-base mt-4 leading-relaxed">Academic and personal projects showcasing my learning journey.</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {visibleProjects.map((p) => (
+                                    <div key={p.title} className="project-card rounded-2xl p-6 group">
+                                        <div className="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center text-cyan-400 text-xl mb-4">
+                                            <i className={`fas ${p.icon}`}></i>
+                                        </div>
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{p.title}</h3>
+                                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/20">{p.category}</span>
+                                        </div>
+                                        <p className="text-gray-400 text-sm leading-relaxed mt-2">{p.desc}</p>
+                                        <div className="flex flex-wrap gap-2 mt-4">
+                                            {p.tech.map((t) => (
+                                                <span key={t} className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-cyan-500/10">{t}</span>
+                                            ))}
+                                        </div>
+                                        <div className="mt-5 pt-4 border-t border-cyan-500/10 flex justify-between items-center">
+                                            <span className="text-xs text-gray-500">
+                                                {p.link && p.link !== '#' ? (
+                                                    <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                                        <i className="fab fa-github mr-1"></i> View on GitHub
+                                                    </a>
+                                                ) : 'Coming Soon'}
+                                            </span>
+                                            {p.link && p.link !== '#' && (
+                                                <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
+                                                    <i className="fas fa-arrow-right"></i>
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="text-center mt-10">
+                                <button
+                                    onClick={() => setCurrentView('projects')}
+                                    className="inline-flex items-center gap-2 text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 px-6 py-3 rounded-full transition-all text-sm font-medium bg-transparent hover:bg-cyan-500/10"
+                                >
+                                    See More
+                                    <i className="fas fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </section>
+
+                        {/* CERTIFICATIONS */}
+                        <section id="certifications" className="py-20 md:py-28">
+                            <div className="text-center max-w-2xl mx-auto mb-14">
+                                <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Certifications</span>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                    Planned <span className="hero-gradient-text">Certifications</span>
+                                </h2>
+                                <p className="text-gray-400 text-base mt-4 leading-relaxed">
+                                    Certifications I plan to pursue in Data Analysis, Data Engineering & Business Analysis.
+                                </p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {[
+                                    { title: 'Google Data Analytics Professional Certificate', status: 'Planned', icon: 'fa-google', field: 'Data Analysis' },
+                                    { title: 'IBM Data Engineering Professional Certificate', status: 'Planned', icon: 'fa-ibm', field: 'Data Engineering' },
+                                    { title: 'ECBA - Entry Certificate in Business Analysis', status: 'Planned', icon: 'fa-building', field: 'Business Analysis' }
+                                ].map((cert) => (
+                                    <div key={cert.title} className="glass rounded-2xl p-6 border border-cyan-500/10 text-center hover:border-cyan-500/30 transition-all">
+                                        <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-4">
+                                            <i className={`fab ${cert.icon}`}></i>
+                                        </div>
+                                        <h3 className="text-sm font-semibold text-white">{cert.title}</h3>
+                                        <span className="text-xs mt-2 inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                            {cert.field}
+                                        </span>
+                                        <div className="mt-3">
+                                            <span className="text-xs inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">Planned</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* ACHIEVEMENTS */}
+                        <section id="achievements" className="py-20 md:py-28">
+                            <div className="text-center max-w-2xl mx-auto mb-14">
+                                <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Achievements</span>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                    Beyond <span className="hero-gradient-text">Academics</span>
+                                </h2>
+                                <p className="text-gray-400 text-base mt-4 leading-relaxed">Extracurricular activities and achievements.</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-2xl mx-auto gap-6">
+                                {[
+                                    { title: 'A/L Physical Science', desc: 'Completed A/L in Physical Science stream (2024)', icon: 'fa-graduation-cap' },
+                                    { title: 'Volunteer', desc: 'Volunteered for School Tech Events', icon: 'fa-hand-holding-heart' }
+                                ].map((item) => (
+                                    <div key={item.title} className="achievement-badge rounded-2xl p-6 text-center">
+                                        <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-3">
+                                            <i className={`fas ${item.icon}`}></i>
+                                        </div>
+                                        <h4 className="font-semibold text-white text-sm">{item.title}</h4>
+                                        <p className="text-xs text-gray-400 mt-1">{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* CONTACT */}
+                        <section id="contact" className="py-20 md:py-28">
+                            <div className="max-w-5xl mx-auto">
+                                <div className="text-center max-w-2xl mx-auto mb-14">
+                                    <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Contact</span>
+                                    <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                        Let's <span className="hero-gradient-text">Connect</span>
+                                    </h2>
+                                    <p className="text-gray-400 text-base mt-4 leading-relaxed">Have a project in mind? Let's talk about data, analytics, and business solutions.</p>
+                                </div>
+                                <div className="glass rounded-2xl p-6 md:p-10 border border-cyan-500/10">
+                                    <ContactForm />
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            );
+        };
+
+        // ---- PROJECTS PAGE ----
+        const ProjectsPage = ({ setCurrentView }) => {
+            return (
+                <div className="gradient-bg bg-grid-pattern min-h-screen">
+                    <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+                        <div className="text-center max-w-2xl mx-auto mb-14">
+                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Portfolio</span>
+                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                All <span className="hero-gradient-text">Projects</span>
+                            </h2>
+                            <p className="text-gray-400 text-base mt-4 leading-relaxed">
+                                Complete list of my academic and personal projects.
+                            </p>
+                            <button
+                                onClick={() => setCurrentView('home')}
+                                className="mt-4 inline-flex items-center gap-2 text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 px-5 py-2 rounded-full transition-all text-sm font-medium"
+                            >
+                                <i className="fas fa-arrow-left text-xs"></i> Back to Home
+                            </button>
+                        </div>
+                        <div className="projects-grid">
+                            {allProjects.map((p) => (
+                                <div key={p.title} className="project-card rounded-2xl p-6 group">
+                                    <div className="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center text-cyan-400 text-xl mb-4">
+                                        <i className={`fas ${p.icon}`}></i>
+                                    </div>
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{p.title}</h3>
+                                        <span className="text-xs bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/20">{p.category}</span>
+                                    </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed mt-2">{p.desc}</p>
+                                    <div className="flex flex-wrap gap-2 mt-4">
+                                        {p.tech.map((t) => (
+                                            <span key={t} className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-cyan-500/10">{t}</span>
+                                        ))}
+                                    </div>
+                                    <div className="mt-5 pt-4 border-t border-cyan-500/10 flex justify-between items-center">
+                                        <span className="text-xs text-gray-500">
+                                            {p.link && p.link !== '#' ? (
+                                                <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                                    <i className="fab fa-github mr-1"></i> View on GitHub
+                                                </a>
+                                            ) : 'Coming Soon'}
+                                        </span>
+                                        {p.link && p.link !== '#' && (
+                                            <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
+                                                <i className="fas fa-arrow-right"></i>
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             );
         };
 
@@ -1054,8 +1206,9 @@
 
         // ---- APP ----
         const App = () => {
-            // ✅ Default Mode - Dark (mulin eka baladdima)
             const [theme, setTheme] = useState('dark');
+            const [currentView, setCurrentView] = useState('home');
+            const [activeSection, setActiveSection] = useState('home');
 
             useEffect(() => {
                 document.documentElement.setAttribute('data-theme', theme);
@@ -1074,17 +1227,26 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            const handleSectionChange = (section) => {
+                if (section !== activeSection && currentView === 'home') {
+                    setActiveSection(section);
+                }
+            };
+
             return (
                 <div className="min-h-screen">
-                    <Navbar theme={theme} toggleTheme={toggleTheme} />
-                    <Hero />
-                    <About />
-                    <Education />
-                    <Skills />
-                    <Projects />
-                    <Certifications />
-                    <Achievements />
-                    <Contact />
+                    <Navbar 
+                        theme={theme} 
+                        toggleTheme={toggleTheme} 
+                        currentView={currentView} 
+                        setCurrentView={setCurrentView}
+                        activeSection={activeSection}
+                    />
+                    {currentView === 'home' ? (
+                        <HomePage setCurrentView={setCurrentView} onSectionChange={handleSectionChange} />
+                    ) : (
+                        <ProjectsPage setCurrentView={setCurrentView} />
+                    )}
                     <Footer />
                 </div>
             );
