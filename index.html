@@ -15,24 +15,62 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --bg-primary: #0c0e1a;
+            --bg-secondary: #141b2d;
+            --bg-card: rgba(20, 27, 45, 0.75);
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #9ca3af;
+            --border-color: rgba(6, 182, 212, 0.12);
+            --glass-bg: rgba(20, 27, 45, 0.75);
+            --glass-border: rgba(6, 182, 212, 0.12);
+            --shadow: rgba(6, 182, 212, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.90);
+            --text-primary: #0a0f1a;
+            --text-secondary: #1e293b;
+            --text-muted: #475569;
+            --border-color: rgba(6, 182, 212, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.90);
+            --glass-border: rgba(6, 182, 212, 0.25);
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
         .gradient-bg {
-            background: radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.10) 0%, transparent 50%),
-                #0c0e1a;
+            background: radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+                var(--bg-primary);
+            transition: var(--transition);
         }
 
         .glass {
-            background: rgba(20, 27, 45, 0.75);
+            background: var(--glass-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(6, 182, 212, 0.12);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
         }
 
         .glass-nav {
-            background: rgba(12, 14, 26, 0.92);
+            background: var(--glass-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(6, 182, 212, 0.10);
+            border-bottom: 1px solid var(--glass-border);
+            transition: var(--transition);
         }
 
         .hero-gradient-text {
@@ -45,32 +83,34 @@
         .skill-tag {
             background: rgba(6, 182, 212, 0.10);
             border: 1px solid rgba(6, 182, 212, 0.20);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            color: var(--text-secondary);
         }
 
         .skill-tag:hover {
             background: rgba(6, 182, 212, 0.20);
             border-color: rgba(6, 182, 212, 0.40);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.15);
+            box-shadow: 0 8px 30px var(--shadow);
         }
 
         .project-card {
-            background: rgba(20, 27, 45, 0.60);
-            border: 1px solid rgba(6, 182, 212, 0.08);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: var(--text-secondary);
         }
 
         .project-card:hover {
             transform: translateY(-8px);
             border-color: rgba(6, 182, 212, 0.40);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            background: rgba(20, 27, 45, 0.90);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            background: var(--bg-secondary);
         }
 
         .project-card .icon-wrap {
             background: rgba(6, 182, 212, 0.12);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .project-card:hover .icon-wrap {
@@ -80,39 +120,42 @@
 
         .social-link {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(6, 182, 212, 0.10);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            color: var(--text-muted);
         }
 
         .social-link:hover {
             background: rgba(6, 182, 212, 0.15);
             border-color: rgba(6, 182, 212, 0.30);
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.15);
+            box-shadow: 0 8px 30px var(--shadow);
+            color: var(--text-primary);
         }
 
         .input-field {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(6, 182, 212, 0.12);
-            transition: all 0.3s ease;
-            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            color: var(--text-secondary);
         }
 
         .input-field:focus {
             border-color: #06b6d4;
             box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
             outline: none;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .input-field::placeholder {
-            color: #6b7280;
+            color: var(--text-muted);
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #06b6d4, #22d3ee);
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: none;
+            color: #ffffff;
         }
 
         .btn-primary:hover {
@@ -121,14 +164,27 @@
             filter: brightness(1.05);
         }
 
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            color: var(--text-secondary);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(6, 182, 212, 0.40);
+            background: rgba(6, 182, 212, 0.08);
+            transform: translateY(-2px);
+        }
+
         .nav-link {
             position: relative;
-            color: #9ca3af;
-            transition: color 0.3s ease;
+            color: var(--text-muted);
+            transition: var(--transition);
         }
 
         .nav-link:hover {
-            color: #e2e8f0;
+            color: var(--text-primary);
         }
 
         .nav-link::after {
@@ -150,7 +206,7 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0c0e1a;
+            background: var(--bg-primary);
         }
         ::-webkit-scrollbar-thumb {
             background: #4b5563;
@@ -162,12 +218,8 @@
 
         @keyframes float {
             0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-12px);
-            }
+            100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
         }
         .float-animation {
             animation: float 5s ease-in-out infinite;
@@ -175,12 +227,8 @@
 
         @keyframes pulse-glow {
             0%,
-            100% {
-                opacity: 0.4;
-            }
-            50% {
-                opacity: 0.8;
-            }
+            100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
         }
         .pulse-glow {
             animation: pulse-glow 3s ease-in-out infinite;
@@ -238,39 +286,169 @@
             border: 1px solid rgba(239, 68, 68, 0.3);
             color: #fca5a5;
         }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 28px;
+            border-left: 2px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #06b6d4;
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 9999px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .theme-toggle:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            background: rgba(6, 182, 212, 0.08);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #06b6d4, #22d3ee, #818cf8);
+            z-index: 9999;
+            transition: width 0.1s ease;
+            width: 0%;
+        }
+
+        .floating-nav {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .floating-nav a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .floating-nav a:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            color: var(--text-primary);
+            transform: scale(1.1);
+            background: rgba(6, 182, 212, 0.08);
+        }
+
+        .achievement-badge {
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            transition: var(--transition);
+        }
+
+        .achievement-badge:hover {
+            background: rgba(6, 182, 212, 0.15);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .floating-nav {
+                right: 12px;
+                bottom: 12px;
+            }
+            .floating-nav a {
+                width: 36px;
+                height: 36px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <div id="progressBar" class="progress-bar"></div>
 
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // ---- TOAST NOTIFICATION COMPONENT ----
+        // ---- TOAST ----
         const Toast = ({ message, type, show }) => {
             if (!show) return null;
             return (
                 <div className={`toast toast-${type} show`}>
-                    {type === 'success' ? (
-                        <i className="fas fa-check-circle mr-2"></i>
-                    ) : (
-                        <i className="fas fa-exclamation-circle mr-2"></i>
-                    )}
+                    {type === 'success' ? <i className="fas fa-check-circle mr-2"></i> : <i className="fas fa-exclamation-circle mr-2"></i>}
                     {message}
                 </div>
             );
         };
 
+        // ---- THEME TOGGLE ----
+        const ThemeToggle = ({ theme, toggleTheme }) => {
+            return (
+                <button onClick={toggleTheme} className="theme-toggle">
+                    <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
+                    <span className="hidden sm:inline">{theme === 'dark' ? 'Light' : 'Dark'}</span>
+                </button>
+            );
+        };
+
+        // ---- FLOATING NAV ----
+        const FloatingNav = () => {
+            const sections = ['home', 'about', 'education', 'skills', 'projects', 'certifications', 'contact'];
+            const icons = ['fa-home', 'fa-user', 'fa-graduation-cap', 'fa-code', 'fa-folder-open', 'fa-certificate', 'fa-envelope'];
+
+            return (
+                <div className="floating-nav">
+                    {sections.map((section, index) => (
+                        <a key={section} href={`#${section}`} aria-label={`Go to ${section}`}>
+                            <i className={`fas ${icons[index]}`}></i>
+                        </a>
+                    ))}
+                </div>
+            );
+        };
+
         // ---- NAVBAR ----
-        const Navbar = () => {
+        const Navbar = ({ theme, toggleTheme }) => {
             const [isOpen, setIsOpen] = useState(false);
             const [scrolled, setScrolled] = useState(false);
 
             useEffect(() => {
-                const handleScroll = () => {
-                    setScrolled(window.scrollY > 30);
-                };
+                const handleScroll = () => setScrolled(window.scrollY > 30);
                 window.addEventListener('scroll', handleScroll);
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
@@ -278,65 +456,45 @@
             const navLinks = [
                 { label: 'Home', href: '#home' },
                 { label: 'About', href: '#about' },
+                { label: 'Education', href: '#education' },
                 { label: 'Skills', href: '#skills' },
                 { label: 'Projects', href: '#projects' },
+                { label: 'Certifications', href: '#certifications' },
                 { label: 'Contact', href: '#contact' },
             ];
 
             return (
-                <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav' : 'bg-transparent'
-                    }`}>
+                <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav' : 'bg-transparent'}`}>
                     <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
                         <a href="#home" className="text-2xl font-bold tracking-tight">
                             <span className="hero-gradient-text">Amila</span>
                             <span className="text-white/60 font-light">Vajira</span>
                         </a>
 
-                        <div className="hidden md:flex items-center gap-8">
+                        <div className="hidden md:flex items-center gap-6">
                             {navLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    className="nav-link text-sm font-medium"
-                                >
-                                    {link.label}
-                                </a>
+                                <a key={link.label} href={link.href} className="nav-link text-sm font-medium">{link.label}</a>
                             ))}
-                            <a
-                                href="#contact"
-                                className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold"
-                            >
-                                Let's Talk
-                            </a>
+                            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+                            <a href="#contact" className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold">Let's Talk</a>
                         </div>
 
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="md:hidden text-white/80 hover:text-white text-2xl focus:outline-none"
-                            aria-label="Toggle menu"
-                        >
-                            {isOpen ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
-                        </button>
+                        <div className="flex items-center gap-3 md:hidden">
+                            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+                            <button onClick={() => setIsOpen(!isOpen)} className="text-white/80 hover:text-white text-2xl">
+                                {isOpen ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
+                            </button>
+                        </div>
                     </div>
 
-                    <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
-                        }`}>
+                    <div className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="glass-nav px-6 py-4 flex flex-col gap-4 border-t border-white/5">
                             {navLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="nav-link text-base font-medium py-1.5"
-                                >
+                                <a key={link.label} href={link.href} onClick={() => setIsOpen(false)} className="nav-link text-base font-medium py-1.5">
                                     {link.label}
                                 </a>
                             ))}
-                            <a
-                                href="#contact"
-                                onClick={() => setIsOpen(false)}
-                                className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold text-center mt-1"
-                            >
+                            <a href="#contact" onClick={() => setIsOpen(false)} className="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold text-center mt-1">
                                 Let's Talk
                             </a>
                         </div>
@@ -354,7 +512,7 @@
                             <div className="order-2 md:order-1">
                                 <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6">
                                     <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                                    <span className="text-sm text-cyan-300 font-medium">1st Year - IS Undergraduate</span>
+                                    <span className="text-sm text-cyan-300 font-medium">IS Undergraduate</span>
                                 </div>
 
                                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
@@ -362,39 +520,34 @@
                                     <span className="hero-gradient-text">Amila Vajira</span>
                                     <span className="text-white">.</span>
                                     <br />
-                                    <span className="hero-gradient-text">Future Analytics Engineer</span>
+                                    <span className="hero-gradient-text">Aspiring Data Engineer & Business Analyst</span>
                                 </h1>
 
                                 <p className="text-gray-400 text-base sm:text-lg mt-5 max-w-lg leading-relaxed">
-                                    Information Systems undergraduate at Sabaragamuwa University. 
+                                    Information Systems undergraduate at Sabaragamuwa University.
                                     Passionate about Data Engineering, Business Analysis & Analytics.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4 mt-8">
-                                    <a
-                                        href="#projects"
-                                        className="btn-primary text-white px-7 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2"
-                                    >
-                                        View My Work
-                                        <i className="fas fa-arrow-right text-xs"></i>
+                                    <a href="#projects" className="btn-primary text-white px-7 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
+                                        View My Work <i className="fas fa-arrow-right text-xs"></i>
                                     </a>
-                                    <a
-                                        href="#contact"
-                                        className="glass text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2 border border-cyan-500/20 hover:border-cyan-400/50 transition-all"
-                                    >
-                                        <i className="fas fa-paper-plane"></i>
-                                        Let's Connect
+                                    <a href="#contact" className="glass text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2 border border-white/10 hover:border-cyan-400/50 transition-all">
+                                        <i className="fas fa-paper-plane"></i> Let's Connect
+                                    </a>
+                                    <a href="#" className="btn-secondary text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2">
+                                        <i className="fas fa-download"></i> Resume
                                     </a>
                                 </div>
 
                                 <div className="flex gap-4 mt-8">
-                                    <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
+                                    <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
                                         <i className="fab fa-github text-lg"></i>
                                     </a>
-                                    <a href="https://linkedin.com" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
+                                    <a href="https://linkedin.com" target="_blank" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
                                         <i className="fab fa-linkedin-in text-lg"></i>
                                     </a>
-                                    <a href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
+                                    <a href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center">
                                         <i className="fab fa-twitter text-lg"></i>
                                     </a>
                                 </div>
@@ -409,21 +562,12 @@
                                         </div>
                                         <div className="absolute inset-0 rounded-full border border-white/5"></div>
                                     </div>
-                                    <div className="absolute -bottom-2 -right-2 glass px-4 py-2 rounded-full border border-cyan-500/20">
-                                        <span className="text-xs font-medium text-white/80">
-                                            <i className="fas fa-graduation-cap text-cyan-400 mr-1.5"></i>
-                                            1st Year
-                                        </span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="flex justify-center mt-16 md:mt-20">
-                            <a
-                                href="#about"
-                                className="text-gray-500 hover:text-gray-300 transition-colors flex flex-col items-center gap-2 text-sm"
-                            >
+                            <a href="#about" className="text-gray-500 hover:text-gray-300 transition-colors flex flex-col items-center gap-2 text-sm">
                                 <span>Scroll</span>
                                 <i className="fas fa-chevron-down animate-bounce text-xs"></i>
                             </a>
@@ -448,7 +592,7 @@
                                             <div className="text-7xl opacity-30">📊</div>
                                         </div>
                                         <div className="absolute bottom-4 right-4 glass px-3 py-1.5 rounded-full border border-cyan-500/20 text-xs text-white/60">
-                                            <i className="fas fa-graduation-cap mr-1.5 text-cyan-400"></i> IS Undergraduate
+                                            <i className="fas fa-rocket mr-1.5 text-cyan-400"></i> Data Enthusiast
                                         </div>
                                     </div>
                                 </div>
@@ -461,42 +605,62 @@
                                     <span className="hero-gradient-text">Undergraduate</span>
                                 </h2>
                                 <p className="text-gray-400 text-base leading-relaxed mt-5">
-                                    I'm a 1st-year Information Systems undergraduate at Sabaragamuwa University of Sri Lanka. 
+                                    I'm an Information Systems undergraduate at Sabaragamuwa University of Sri Lanka.
                                     I completed my A/Ls in the Physical Science stream, which gave me a strong 
                                     foundation in analytical thinking and problem-solving.
                                 </p>
                                 <p className="text-gray-400 text-base leading-relaxed mt-3">
                                     I'm passionate about Data Engineering, Business Analysis, and Analytics. 
-                                    I aspire to become a skilled Analytics Engineer who bridges the gap between raw data 
-                                    and actionable business insights. I'm continuously learning and building my skills 
-                                    in data processing, analytics, and business intelligence.
+                                    I'm continuously learning and building my skills in data processing, analytics, 
+                                    and business intelligence. My goal is to become a skilled professional who bridges 
+                                    the gap between raw data and actionable business insights.
                                 </p>
-
-                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
-                                    {[
-                                        { label: 'Information Systems', value: 'Undergraduate' },
-                                        { label: 'A/L Stream', value: 'Physical Science' },
-                                        { label: 'University', value: '1st Year' },
-                                    ].map((stat) => (
-                                        <div key={stat.label} className="glass rounded-xl p-4 border border-cyan-500/10 text-center">
-                                            <div className="text-sm font-bold hero-gradient-text">{stat.value}</div>
-                                            <div className="text-xs text-gray-400 mt-0.5">{stat.label}</div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="mt-4 flex flex-wrap gap-2">
-                                    <span className="text-xs text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                                        <i className="fas fa-calculator mr-1"></i> Combined Maths
-                                    </span>
-                                    <span className="text-xs text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                                        <i className="fas fa-flask mr-1"></i> Physics
-                                    </span>
-                                    <span className="text-xs text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                                        <i className="fas fa-atom mr-1"></i> Chemistry
-                                    </span>
-                                </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // ---- EDUCATION ----
+        const Education = () => {
+            const educationData = [
+                {
+                    year: '2026 - Present',
+                    title: 'BSc (Hons) in Information Systems',
+                    institution: 'Sabaragamuwa University of Sri Lanka',
+                    description: 'Focus on Information Systems, Data Engineering, and Business Analysis.',
+                    icon: 'fa-graduation-cap'
+                },
+            ];
+
+            return (
+                <section id="education" className="py-20 md:py-28 gradient-bg bg-grid-pattern">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <div className="text-center max-w-2xl mx-auto mb-14">
+                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Education</span>
+                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                My <span className="hero-gradient-text">Journey</span>
+                            </h2>
+                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Academic background and qualifications.</p>
+                        </div>
+
+                        <div className="max-w-3xl mx-auto space-y-6">
+                            {educationData.map((item, index) => (
+                                <div key={index} className="timeline-item glass rounded-2xl p-6 border border-cyan-500/10">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                                <i className={`fas ${item.icon}`}></i>
+                                            </div>
+                                            <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                                        </div>
+                                        <span className="text-sm text-cyan-400 font-medium">{item.year}</span>
+                                    </div>
+                                    <p className="text-cyan-300 text-sm font-medium ml-12 sm:ml-0">{item.institution}</p>
+                                    <p className="text-gray-400 text-sm ml-12 sm:ml-0 mt-1">{item.description}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -507,19 +671,24 @@
         const Skills = () => {
             const skillCategories = [
                 {
-                    title: 'Data & Analytics',
+                    title: 'Data Engineering (Learning)',
                     icon: 'fa-database',
-                    skills: ['Python', 'SQL', 'Power BI', 'Tableau', 'Excel', 'Data Visualization', 'Analytics'],
+                    skills: ['Python', 'SQL', 'ETL', 'Data Warehousing', 'Pandas', 'NumPy'],
                 },
                 {
-                    title: 'Business Analysis',
+                    title: 'Business Analysis (Learning)',
                     icon: 'fa-chart-line',
                     skills: ['Requirements Gathering', 'Process Modeling', 'SWOT Analysis', 'Agile', 'JIRA'],
                 },
                 {
+                    title: 'Analytics & Visualization',
+                    icon: 'fa-chart-pie',
+                    skills: ['Power BI', 'Tableau', 'Excel', 'Data Visualization', 'Matplotlib', 'Seaborn'],
+                },
+                {
                     title: 'Tools & Technologies',
                     icon: 'fa-code',
-                    skills: ['Git', 'VS Code', 'MySQL', 'PostgreSQL', 'Linux'],
+                    skills: ['Git', 'VS Code', 'MySQL', 'PostgreSQL', 'Linux', 'Docker'],
                 },
             ];
 
@@ -529,14 +698,14 @@
                         <div className="text-center max-w-2xl mx-auto mb-14">
                             <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Skills</span>
                             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
-                                My <span className="hero-gradient-text">Skills</span>
+                                My <span className="hero-gradient-text">Learning Path</span>
                             </h2>
                             <p className="text-gray-400 text-base mt-4 leading-relaxed">
-                                Tools and technologies I'm currently learning and working with.
+                                Tools and technologies I'm currently learning for Data Engineering & Business Analysis.
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-6">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {skillCategories.map((cat) => (
                                 <div key={cat.title} className="glass rounded-2xl p-6 border border-cyan-500/10 hover:border-cyan-500/30 transition-all duration-300">
                                     <div className="flex items-center gap-3 mb-5">
@@ -547,9 +716,7 @@
                                     </div>
                                     <div className="flex flex-wrap gap-2.5">
                                         {cat.skills.map((skill) => (
-                                            <span key={skill} className="skill-tag text-sm text-gray-300 px-4 py-2 rounded-full">
-                                                {skill}
-                                            </span>
+                                            <span key={skill} className="skill-tag text-sm px-4 py-2 rounded-full">{skill}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -557,13 +724,68 @@
                         </div>
 
                         <div className="mt-10 flex flex-wrap justify-center gap-3 opacity-70">
-                            {['Python', 'SQL', 'Pandas', 'NumPy', 'Matplotlib', 'Power BI', 'Excel', 'ETL', 'Data Warehousing', 'Analytics'].map(
-                                (s) => (
-                                    <span key={s} className="text-sm text-gray-500 bg-white/5 px-4 py-1.5 rounded-full border border-cyan-500/10">
-                                        {s}
+                            {['Python', 'SQL', 'Pandas', 'NumPy', 'Matplotlib', 'Power BI', 'Excel', 'ETL', 'Data Warehousing', 'Analytics'].map((s) => (
+                                <span key={s} className="text-sm text-gray-500 bg-white/5 px-4 py-1.5 rounded-full border border-cyan-500/10">{s}</span>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // ---- CERTIFICATIONS (Data Analysis, Data Engineering, Business Analysis) ----
+        const Certifications = () => {
+            const certs = [
+                {
+                    title: 'Google Data Analytics Professional Certificate',
+                    status: 'Planned',
+                    icon: 'fa-google',
+                    field: 'Data Analysis'
+                },
+                {
+                    title: 'IBM Data Engineering Professional Certificate',
+                    status: 'Planned',
+                    icon: 'fa-ibm',
+                    field: 'Data Engineering'
+                },
+                {
+                    title: 'ECBA - Entry Certificate in Business Analysis',
+                    status: 'Planned',
+                    icon: 'fa-building',
+                    field: 'Business Analysis'
+                },
+            ];
+
+            return (
+                <section id="certifications" className="py-20 md:py-28 gradient-bg bg-grid-pattern">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <div className="text-center max-w-2xl mx-auto mb-14">
+                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Certifications</span>
+                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                Planned <span className="hero-gradient-text">Certifications</span>
+                            </h2>
+                            <p className="text-gray-400 text-base mt-4 leading-relaxed">
+                                Certifications I plan to pursue in Data Analysis, Data Engineering & Business Analysis.
+                            </p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {certs.map((cert) => (
+                                <div key={cert.title} className="glass rounded-2xl p-6 border border-cyan-500/10 text-center hover:border-cyan-500/30 transition-all">
+                                    <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-4">
+                                        <i className={`fab ${cert.icon}`}></i>
+                                    </div>
+                                    <h3 className="text-sm font-semibold text-white">{cert.title}</h3>
+                                    <span className="text-xs mt-2 inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                        {cert.field}
                                     </span>
-                                )
-                            )}
+                                    <div className="mt-3">
+                                        <span className="text-xs inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                                            Planned
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -572,50 +794,60 @@
 
         // ---- PROJECTS ----
         const Projects = () => {
-            const projects = [
+            const [showAll, setShowAll] = useState(false);
+
+            const allProjects = [
                 {
                     title: 'Python Calculator',
-                    desc: 'A simple calculator with GUI built using Python and Tkinter. Supports addition, subtraction, multiplication, division, and modulus operations with error handling.',
+                    desc: 'A simple calculator with GUI built using Python and Tkinter.',
                     tech: ['Python', 'Tkinter', 'GUI'],
                     icon: 'fa-calculator',
                     link: 'https://github.com/Amila999-cell/python-calculator',
+                    category: 'Development'
                 },
                 {
                     title: 'Student Performance Analytics',
-                    desc: 'A dashboard to analyze student performance data and identify patterns using Python and Power BI.',
+                    desc: 'Analyzing student performance data using Python and Power BI.',
                     tech: ['Python', 'Power BI', 'Pandas'],
                     icon: 'fa-chart-simple',
                     link: '#',
+                    category: 'Analytics'
                 },
                 {
                     title: 'University Event Management System',
-                    desc: 'A web-based system to manage university events, registrations, and feedback.',
+                    desc: 'A web-based system to manage university events and registrations.',
                     tech: ['Web Development', 'Database', 'UI/UX'],
                     icon: 'fa-calendar-check',
                     link: '#',
+                    category: 'Development'
                 },
                 {
-                    title: 'Data Visualization Tool for Business',
-                    desc: 'An interactive dashboard for businesses to visualize sales and customer data.',
+                    title: 'Data Visualization Dashboard',
+                    desc: 'Interactive dashboard for visualizing business sales data.',
                     tech: ['Power BI', 'Excel', 'Data Modeling'],
                     icon: 'fa-chart-line',
                     link: '#',
+                    category: 'Analytics'
                 },
                 {
                     title: 'Inventory Management System',
-                    desc: 'Developed a simple inventory management system using Python and SQLite.',
+                    desc: 'A simple inventory management system using Python and SQLite.',
                     tech: ['Python', 'SQLite', 'CRUD'],
                     icon: 'fa-cubes',
                     link: '#',
+                    category: 'Development'
                 },
                 {
                     title: 'Market Research Analysis',
-                    desc: 'Conducted market research analysis using survey data to identify customer preferences.',
+                    desc: 'Analyzing survey data to identify customer preferences.',
                     tech: ['Excel', 'Survey Design', 'Reporting'],
                     icon: 'fa-magnifying-glass-chart',
                     link: '#',
+                    category: 'Business Analysis'
                 },
             ];
+
+            const visibleProjects = showAll ? allProjects : allProjects.slice(0, 3);
 
             return (
                 <section id="projects" className="py-20 md:py-28 gradient-bg bg-grid-pattern">
@@ -625,26 +857,30 @@
                             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
                                 My <span className="hero-gradient-text">Projects</span>
                             </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">
-                                Academic and personal projects showcasing my skills and learning journey.
-                            </p>
+                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Academic and personal projects showcasing my learning journey.</p>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center gap-2 mb-8">
+                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">All</span>
+                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">Analytics</span>
+                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">Development</span>
+                            <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">Business Analysis</span>
                         </div>
 
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {projects.map((p) => (
+                            {visibleProjects.map((p) => (
                                 <div key={p.title} className="project-card rounded-2xl p-6 group">
                                     <div className="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center text-cyan-400 text-xl mb-4">
                                         <i className={`fas ${p.icon}`}></i>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
-                                        {p.title}
-                                    </h3>
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{p.title}</h3>
+                                        <span className="text-xs bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/20">{p.category}</span>
+                                    </div>
                                     <p className="text-gray-400 text-sm leading-relaxed mt-2">{p.desc}</p>
                                     <div className="flex flex-wrap gap-2 mt-4">
                                         {p.tech.map((t) => (
-                                            <span key={t} className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-cyan-500/10">
-                                                {t}
-                                            </span>
+                                            <span key={t} className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-cyan-500/10">{t}</span>
                                         ))}
                                     </div>
                                     <div className="mt-5 pt-4 border-t border-cyan-500/10 flex justify-between items-center">
@@ -653,9 +889,7 @@
                                                 <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors">
                                                     <i className="fab fa-github mr-1"></i> View on GitHub
                                                 </a>
-                                            ) : (
-                                                'Coming Soon'
-                                            )}
+                                            ) : 'Coming Soon'}
                                         </span>
                                         {p.link && p.link !== '#' && (
                                             <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
@@ -663,6 +897,46 @@
                                             </a>
                                         )}
                                     </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="text-center mt-10">
+                            <button onClick={() => setShowAll(!showAll)} className="inline-flex items-center gap-2 text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 px-6 py-3 rounded-full transition-all text-sm font-medium bg-transparent hover:bg-cyan-500/10">
+                                {showAll ? <>See Less <i className="fas fa-chevron-up text-xs"></i></> : <>See More <i className="fas fa-chevron-down text-xs"></i></>}
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // ---- ACHIEVEMENTS ----
+        const Achievements = () => {
+            const achievements = [
+                { title: 'A/L Physical Science', desc: 'Completed A/L in Physical Science stream (2024)', icon: 'fa-graduation-cap' },
+                { title: 'Volunteer', desc: 'Volunteered for School Tech Events', icon: 'fa-hand-holding-heart' },
+            ];
+
+            return (
+                <section className="py-20 md:py-28 gradient-bg bg-grid-pattern">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <div className="text-center max-w-2xl mx-auto mb-14">
+                            <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Achievements</span>
+                            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+                                Beyond <span className="hero-gradient-text">Academics</span>
+                            </h2>
+                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Extracurricular activities and achievements.</p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-2 max-w-2xl mx-auto gap-6">
+                            {achievements.map((item) => (
+                                <div key={item.title} className="achievement-badge rounded-2xl p-6 text-center">
+                                    <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-3">
+                                        <i className={`fas ${item.icon}`}></i>
+                                    </div>
+                                    <h4 className="font-semibold text-white text-sm">{item.title}</h4>
+                                    <p className="text-xs text-gray-400 mt-1">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -681,74 +955,39 @@
                 setFormData({ ...formData, [e.target.name]: e.target.value });
             };
 
-            // --- TELEGRAM CONFIGURATION ---
             const TELEGRAM_BOT_TOKEN = '8546791642:AAHsIZiKKd-9N14DnLnJsA7nWJ3_rbCaReQ';
             const TELEGRAM_CHAT_ID = '7885063642';
 
             const sendToTelegram = async (name, email, message) => {
                 const text = `📩 *New Portfolio Message!*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n💬 *Message:* ${message}\n\n📱 *From:* Portfolio Website`;
-                
                 const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-                
                 const response = await fetch(url, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_ID,
-                        text: text,
-                        parse_mode: 'Markdown',
-                    }),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'Markdown' }),
                 });
-                
                 return response.json();
             };
 
             const handleSubmit = async (e) => {
                 e.preventDefault();
-                
                 if (!formData.name || !formData.email || !formData.message) {
-                    setToast({
-                        show: true,
-                        message: 'Please fill in all fields!',
-                        type: 'error'
-                    });
+                    setToast({ show: true, message: 'Please fill in all fields!', type: 'error' });
                     setTimeout(() => setToast({ ...toast, show: false }), 4000);
                     return;
                 }
-
                 setLoading(true);
-
                 try {
-                    const result = await sendToTelegram(
-                        formData.name,
-                        formData.email,
-                        formData.message
-                    );
-
+                    const result = await sendToTelegram(formData.name, formData.email, formData.message);
                     if (result.ok) {
-                        setToast({
-                            show: true,
-                            message: '✅ Message sent successfully! I\'ll get back to you soon.',
-                            type: 'success'
-                        });
+                        setToast({ show: true, message: '✅ Message sent successfully! I\'ll get back to you soon.', type: 'success' });
                         setFormData({ name: '', email: '', message: '' });
                     } else {
-                        setToast({
-                            show: true,
-                            message: '❌ Failed to send message. Please try again later.',
-                            type: 'error'
-                        });
+                        setToast({ show: true, message: '❌ Failed to send message. Please try again later.', type: 'error' });
                     }
                 } catch (error) {
-                    setToast({
-                        show: true,
-                        message: '❌ Network error. Please check your connection.',
-                        type: 'error'
-                    });
+                    setToast({ show: true, message: '❌ Network error. Please check your connection.', type: 'error' });
                 }
-
                 setLoading(false);
                 setTimeout(() => setToast({ ...toast, show: false }), 4000);
             };
@@ -756,20 +995,14 @@
             return (
                 <section id="contact" className="py-20 md:py-28 gradient-bg">
                     <div className="max-w-5xl mx-auto px-6">
-                        <Toast 
-                            message={toast.message} 
-                            type={toast.type} 
-                            show={toast.show} 
-                        />
+                        <Toast message={toast.message} type={toast.type} show={toast.show} />
 
                         <div className="text-center max-w-2xl mx-auto mb-14">
                             <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Contact</span>
                             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
                                 Let's <span className="hero-gradient-text">Connect</span>
                             </h2>
-                            <p className="text-gray-400 text-base mt-4 leading-relaxed">
-                                Send me a message and I'll get back to you via email!
-                            </p>
+                            <p className="text-gray-400 text-base mt-4 leading-relaxed">Have a project in mind? Let's talk about data, analytics, and business solutions.</p>
                         </div>
 
                         <div className="glass rounded-2xl p-6 md:p-10 border border-cyan-500/10">
@@ -778,7 +1011,7 @@
                                     <div>
                                         <h3 className="text-white font-semibold text-lg">Get in touch</h3>
                                         <p className="text-gray-400 text-sm mt-1 leading-relaxed">
-                                            Fill the form and I'll get back to you via email!
+                                            I'm open to data engineering projects, business analysis opportunities, and collaborations.
                                         </p>
                                     </div>
 
@@ -810,13 +1043,13 @@
                                     </div>
 
                                     <div className="flex gap-3 pt-2">
-                                        <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
+                                        <a href="https://github.com/Amila999-cell" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
                                             <i className="fab fa-github"></i>
                                         </a>
-                                        <a href="https://linkedin.com" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
+                                        <a href="https://linkedin.com" target="_blank" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
                                             <i className="fab fa-linkedin-in"></i>
                                         </a>
-                                        <a href="#" className="social-link w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
+                                        <a href="#" className="social-link w-10 h-10 rounded-full flex items-center justify-center">
                                             <i className="fab fa-twitter"></i>
                                         </a>
                                     </div>
@@ -825,62 +1058,20 @@
                                 <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4">
                                     <div>
                                         <label className="text-sm text-gray-300 font-medium block mb-1.5">Your Name</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            placeholder="John Doe"
-                                            className="input-field w-full px-4 py-3 rounded-xl text-sm"
-                                            required
-                                        />
+                                        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="input-field w-full px-4 py-3 rounded-xl text-sm" required />
                                     </div>
                                     <div>
                                         <label className="text-sm text-gray-300 font-medium block mb-1.5">Email Address</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            placeholder="john@example.com"
-                                            className="input-field w-full px-4 py-3 rounded-xl text-sm"
-                                            required
-                                        />
+                                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="input-field w-full px-4 py-3 rounded-xl text-sm" required />
                                     </div>
                                     <div>
                                         <label className="text-sm text-gray-300 font-medium block mb-1.5">Message</label>
-                                        <textarea
-                                            name="message"
-                                            value={formData.message}
-                                            onChange={handleChange}
-                                            placeholder="Tell me about your project..."
-                                            rows="4"
-                                            className="input-field w-full px-4 py-3 rounded-xl text-sm resize-none"
-                                            required
-                                        ></textarea>
+                                        <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project..." rows="4" className="input-field w-full px-4 py-3 rounded-xl text-sm resize-none" required></textarea>
                                     </div>
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className={`btn-primary text-white px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto inline-flex items-center justify-center gap-2 transition-all ${loading ? 'opacity-70 cursor-not-allowed' : ''
-                                            }`}
-                                    >
-                                        {loading ? (
-                                            <>
-                                                <span className="spinner"></span>
-                                                Sending...
-                                            </>
-                                        ) : (
-                                            <>
-                                                Send Message
-                                                <i className="fas fa-paper-plane text-xs"></i>
-                                            </>
-                                        )}
+                                    <button type="submit" disabled={loading} className={`btn-primary text-white px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto inline-flex items-center justify-center gap-2 transition-all ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                                        {loading ? <><span className="spinner"></span> Sending...</> : <>Send Message <i className="fas fa-paper-plane text-xs"></i></>}
                                     </button>
-                                    <p className="text-xs text-gray-500 mt-2">
-                                        <i className="fas fa-envelope text-cyan-400 mr-1"></i>
-                                        I'll reply to your email address
-                                    </p>
+                                    <p className="text-xs text-gray-500 mt-2"><i className="fas fa-envelope text-cyan-400 mr-1"></i> I'll reply to your email address</p>
                                 </form>
                             </div>
                         </div>
@@ -897,14 +1088,12 @@
                     <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                         <p className="text-gray-500 text-sm">
                             &copy; {year} <span className="text-white/60 font-medium">Amila Vajira</span>.
-                            Built with <i className="fas fa-heart text-rose-400 text-xs mx-1"></i> & React.
+                            Aspiring Data Engineer & Business Analyst. Built with <i className="fas fa-heart text-rose-400 text-xs mx-1"></i> & React.
                         </p>
                         <div className="flex gap-5 text-sm text-gray-500">
                             <a href="#" className="hover:text-white transition-colors">Privacy</a>
                             <a href="#" className="hover:text-white transition-colors">Terms</a>
-                            <a href="#home" className="hover:text-white transition-colors">
-                                <i className="fas fa-arrow-up"></i>
-                            </a>
+                            <a href="#home" className="hover:text-white transition-colors"><i className="fas fa-arrow-up"></i></a>
                         </div>
                     </div>
                 </footer>
@@ -913,15 +1102,38 @@
 
         // ---- APP ----
         const App = () => {
+            const [theme, setTheme] = useState('dark');
+
+            useEffect(() => {
+                document.documentElement.setAttribute('data-theme', theme);
+                document.body.style.backgroundColor = theme === 'dark' ? '#0c0e1a' : '#f8fafc';
+            }, [theme]);
+
+            const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    const scrollTop = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    document.getElementById('progressBar').style.width = (scrollTop / docHeight) * 100 + '%';
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
             return (
-                <div className="min-h-screen bg-[#0c0e1a] text-white">
-                    <Navbar />
+                <div className="min-h-screen">
+                    <Navbar theme={theme} toggleTheme={toggleTheme} />
                     <Hero />
                     <About />
+                    <Education />
                     <Skills />
                     <Projects />
+                    <Certifications />
+                    <Achievements />
                     <Contact />
                     <Footer />
+                    <FloatingNav />
                 </div>
             );
         };
