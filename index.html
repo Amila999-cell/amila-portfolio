@@ -82,7 +82,6 @@
             color: #0a5c73;
         }
 
-        /* ===== NAVBAR ACTIVE LINK ===== */
         .nav-link-active {
             color: var(--text-primary) !important;
             font-weight: 600 !important;
@@ -91,12 +90,10 @@
             width: 100% !important;
         }
 
-        /* Light Mode Active Link */
         [data-theme="light"] .nav-link-active {
             color: #0f172a !important;
         }
 
-        /* Light Mode - Project Card Fix */
         [data-theme="light"] .project-card h3 {
             color: #0f172a !important;
         }
@@ -524,6 +521,7 @@
             const handleNavClick = (view) => {
                 if (view === 'projects') {
                     setCurrentView('projects');
+                    setTimeout(() => window.scrollTo(0, 0), 50);
                 } else {
                     setCurrentView('home');
                     setTimeout(() => {
@@ -534,7 +532,6 @@
                 setIsOpen(false);
             };
 
-            // Determine which link is active
             const isActive = (view) => {
                 if (currentView === 'projects') return view === 'projects';
                 return activeSection === view;
@@ -769,26 +766,24 @@
             );
         };
 
-        // ---- HOME PAGE (with Scroll Detection for Navbar Highlight) ----
+        // ---- HOME PAGE ----
         const HomePage = ({ setCurrentView, onSectionChange }) => {
             const visibleProjects = allProjects.slice(0, 3);
             const [activeSection, setActiveSection] = useState('home');
             const isScrollingRef = useRef(false);
 
-            // Scroll detection for navbar active link
             useEffect(() => {
                 const sectionIds = ['home', 'about', 'education', 'skills', 'projects-home', 'certifications', 'achievements', 'contact'];
                 
                 const handleScroll = () => {
                     if (isScrollingRef.current) return;
                     
-                    const scrollY = window.scrollY + 120; // offset for navbar
+                    const scrollY = window.scrollY + 120;
                     
                     for (const id of sectionIds) {
                         const el = document.getElementById(id);
                         if (el) {
                             const rect = el.getBoundingClientRect();
-                            // Check if section is in view
                             if (rect.top <= 180 && rect.bottom > 180) {
                                 let view = id === 'projects-home' ? 'projects' : id;
                                 if (view !== activeSection) {
@@ -802,11 +797,15 @@
                 };
 
                 window.addEventListener('scroll', handleScroll);
-                // Initial check
                 setTimeout(handleScroll, 100);
                 
                 return () => window.removeEventListener('scroll', handleScroll);
             }, [activeSection, onSectionChange]);
+
+            const handleSeeMore = () => {
+                setCurrentView('projects');
+                setTimeout(() => window.scrollTo(0, 0), 50);
+            };
 
             return (
                 <div className="gradient-bg bg-grid-pattern">
@@ -831,7 +830,7 @@
                                     Passionate about Data Engineering, Business Analysis & Analytics.
                                 </p>
                                 <div className="flex flex-wrap gap-4 mt-8">
-                                    <button onClick={() => setCurrentView('projects')} className="btn-primary text-white px-7 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
+                                    <button onClick={handleSeeMore} className="btn-primary text-white px-7 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
                                         View My Work <i className="fas fa-arrow-right text-xs"></i>
                                     </button>
                                     <button onClick={() => setCurrentView('contact')} className="glass text-white/80 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium inline-flex items-center gap-2 border border-white/10 hover:border-cyan-400/50 transition-all">
@@ -1038,7 +1037,7 @@
                             </div>
                             <div className="text-center mt-10">
                                 <button
-                                    onClick={() => setCurrentView('projects')}
+                                    onClick={handleSeeMore}
                                     className="inline-flex items-center gap-2 text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 px-6 py-3 rounded-full transition-all text-sm font-medium bg-transparent hover:bg-cyan-500/10"
                                 >
                                     See More
@@ -1126,11 +1125,32 @@
             );
         };
 
-        // ---- PROJECTS PAGE ----
+        // ---- PROJECTS PAGE (with "Back" button Top-Left) ----
         const ProjectsPage = ({ setCurrentView }) => {
+            const handleBack = () => {
+                setCurrentView('home');
+                setTimeout(() => {
+                    const projectsSection = document.getElementById('projects-home');
+                    if (projectsSection) {
+                        projectsSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            };
+
             return (
                 <div className="gradient-bg bg-grid-pattern min-h-screen">
                     <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+                        {/* Back Button - Top Left */}
+                        <div className="flex items-center justify-between mb-8">
+                            <button
+                                onClick={handleBack}
+                                className="inline-flex items-center gap-2 text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 px-4 py-2 rounded-full transition-all text-sm font-medium"
+                            >
+                                <i className="fas fa-arrow-left text-xs"></i> Back
+                            </button>
+                            <div></div> {/* Spacer for flex justify-between */}
+                        </div>
+
                         <div className="text-center max-w-2xl mx-auto mb-14">
                             <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Portfolio</span>
                             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
@@ -1139,13 +1159,8 @@
                             <p className="text-gray-400 text-base mt-4 leading-relaxed">
                                 Complete list of my academic and personal projects.
                             </p>
-                            <button
-                                onClick={() => setCurrentView('home')}
-                                className="mt-4 inline-flex items-center gap-2 text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 px-5 py-2 rounded-full transition-all text-sm font-medium"
-                            >
-                                <i className="fas fa-arrow-left text-xs"></i> Back to Home
-                            </button>
                         </div>
+
                         <div className="projects-grid">
                             {allProjects.map((p) => (
                                 <div key={p.title} className="project-card rounded-2xl p-6 group">
@@ -1216,6 +1231,13 @@
             }, [theme]);
 
             const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+
+            // Scroll to top when navigating to projects page
+            useEffect(() => {
+                if (currentView === 'projects') {
+                    window.scrollTo(0, 0);
+                }
+            }, [currentView]);
 
             useEffect(() => {
                 const handleScroll = () => {
