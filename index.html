@@ -29,17 +29,18 @@
             --transition: all 0.3s ease;
         }
 
+        /* ✅ Light Mode - High Contrast (පැහැදිලි අකුරු) */
         [data-theme="light"] {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #ffffff;
-            --bg-card: rgba(255, 255, 255, 0.90);
-            --text-primary: #0a0f1a;
-            --text-secondary: #1e293b;
-            --text-muted: #475569;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text-primary: #0f172a;     /* ඉතා තද නිල්-කළු */
+            --text-secondary: #1e293b;   /* තද නිල්-කළු */
+            --text-muted: #334155;       /* මධ්‍යම තද අළු */
             --border-color: rgba(6, 182, 212, 0.25);
-            --glass-bg: rgba(255, 255, 255, 0.90);
+            --glass-bg: rgba(255, 255, 255, 0.95);
             --glass-border: rgba(6, 182, 212, 0.25);
-            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow: rgba(0, 0, 0, 0.1);
         }
 
         body {
@@ -339,39 +340,6 @@
             width: 0%;
         }
 
-        .floating-nav {
-            position: fixed;
-            right: 24px;
-            bottom: 24px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .floating-nav a {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            transition: var(--transition);
-            backdrop-filter: blur(8px);
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .floating-nav a:hover {
-            border-color: rgba(6, 182, 212, 0.4);
-            color: var(--text-primary);
-            transform: scale(1.1);
-            background: rgba(6, 182, 212, 0.08);
-        }
-
         .achievement-badge {
             background: rgba(6, 182, 212, 0.08);
             border: 1px solid rgba(6, 182, 212, 0.15);
@@ -423,22 +391,6 @@
                     <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
                     <span className="hidden sm:inline">{theme === 'dark' ? 'Light' : 'Dark'}</span>
                 </button>
-            );
-        };
-
-        // ---- FLOATING NAV ----
-        const FloatingNav = () => {
-            const sections = ['home', 'about', 'education', 'skills', 'projects', 'certifications', 'contact'];
-            const icons = ['fa-home', 'fa-user', 'fa-graduation-cap', 'fa-code', 'fa-folder-open', 'fa-certificate', 'fa-envelope'];
-
-            return (
-                <div className="floating-nav">
-                    {sections.map((section, index) => (
-                        <a key={section} href={`#${section}`} aria-label={`Go to ${section}`}>
-                            <i className={`fas ${icons[index]}`}></i>
-                        </a>
-                    ))}
-                </div>
             );
         };
 
@@ -733,7 +685,7 @@
             );
         };
 
-        // ---- CERTIFICATIONS (Data Analysis, Data Engineering, Business Analysis) ----
+        // ---- CERTIFICATIONS ----
         const Certifications = () => {
             const certs = [
                 {
@@ -1102,11 +1054,12 @@
 
         // ---- APP ----
         const App = () => {
+            // ✅ Default Mode - Dark (mulin eka baladdima)
             const [theme, setTheme] = useState('dark');
 
             useEffect(() => {
                 document.documentElement.setAttribute('data-theme', theme);
-                document.body.style.backgroundColor = theme === 'dark' ? '#0c0e1a' : '#f8fafc';
+                document.body.style.backgroundColor = theme === 'dark' ? '#0c0e1a' : '#ffffff';
             }, [theme]);
 
             const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -1133,7 +1086,6 @@
                     <Achievements />
                     <Contact />
                     <Footer />
-                    <FloatingNav />
                 </div>
             );
         };
