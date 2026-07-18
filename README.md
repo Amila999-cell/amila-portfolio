@@ -1,4 +1,4 @@
-# 🚀 Amila Vajira | Data Engineer Portfolio
+# 🚀 Amila Vajira | Portfolio Website
 
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-06B6D4?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -16,6 +16,7 @@
 - [Tech Stack](#-tech-stack)
 - [Sections](#-sections)
 - [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
 - [Customization](#-customization)
 - [Contact Form Setup](#-contact-form-setup)
 - [Deployment](#-deployment)
@@ -77,11 +78,11 @@ Note: This is a single-file React application. All code is embedded in index.htm
 🎨 Customization Guide
 1. Personal Information
 Field	Update To
-Name	Amila Vajra
+Name	Amila Vajira
 Title	Aspiring Data Engineer
 Email	amilawajira24@gmail.com
-Location	Nuwaraeliya,Sri Lanka
-University	Sabaragamuwa University Of Sri Lanka
+Location	Nuwaraeliya, Sri Lanka
+University	Sabaragamuwa University
 2. Update Projects
 javascript
 const allProjects = [
@@ -95,9 +96,10 @@ const allProjects = [
   }
 ];
 3. Social Links
-html
 GitHub: https://github.com/Amila999-cell
-LinkedIn: https://linkedin.com/in/amila_vajira
+
+LinkedIn: https://linkedin.com/in/amila-vajira
+
 📬 Contact Form Setup
 Step 1: Create Telegram Bot
 Open Telegram and search for @BotFather
@@ -129,12 +131,12 @@ Deploy to GitHub Pages
 bash
 git add .
 git commit -m "Initial commit"
-git push origin main
+git push -u origin master
 Then:
 
 Go to Settings -> Pages
 
-Branch: main, Folder: / (root)
+Branch: master, Folder: / (root)
 
 Click Save
 
