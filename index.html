@@ -802,7 +802,18 @@
                                     <p className="text-gray-400 text-sm leading-relaxed mt-2">{p.desc}</p>
                                     <div className="flex flex-wrap gap-2 mt-4">{p.tech.map((t) => (<span key={t} className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-cyan-500/10">{t}</span>))}</div>
                                     <div className="mt-5 pt-4 border-t border-cyan-500/10 flex justify-between items-center">
-                                        <span className="text-xs text-gray-500">Coming Soon</span>
+                                        <span className="text-xs text-gray-500">
+                                            {p.link && p.link !== '#' ? (
+                                                <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                                    <i className="fab fa-github mr-1"></i> View on GitHub
+                                                </a>
+                                            ) : 'Coming Soon'}
+                                        </span>
+                                        {p.link && p.link !== '#' && (
+                                            <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
+                                                <i className="fas fa-arrow-right"></i>
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             ))}
@@ -967,7 +978,6 @@
                                 <p className="text-gray-400 text-base mt-4 leading-relaxed">Currently learning and planning to learn for Data Engineering.</p>
                             </div>
 
-                            {/* Current Learning */}
                             <div className="mb-12">
                                 <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
                                     <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
@@ -1002,7 +1012,6 @@
                                 </div>
                             </div>
 
-                            {/* Plan to Learn */}
                             <div>
                                 <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
                                     <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
@@ -1011,7 +1020,7 @@
                                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                                     {[
                                         { title: 'Big Data Technologies', icon: 'fa-hadoop', skills: ['Apache Spark', 'Hadoop', 'Kafka'] },
-                                        { title: 'Cloud Platforms', icon: 'fa-cloud', skills: ['AWS', 'Azure', 'GCP'] },
+                                        { title: 'Cloud Platforms', icon: 'fa-cloud', skills: ['AWS'] },
                                         { title: 'Orchestration & Workflow', icon: 'fa-clock', skills: ['Apache Airflow', 'Docker', 'Kubernetes'] },
                                         { title: 'Data Engineering Tools', icon: 'fa-tools', skills: ['Apache NiFi', 'dbt', 'Snowflake'] }
                                     ].map((cat) => (
@@ -1059,7 +1068,18 @@
                                         <p className="text-gray-400 text-sm leading-relaxed mt-2">{p.desc}</p>
                                         <div className="flex flex-wrap gap-2 mt-4">{p.tech.map((t) => (<span key={t} className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-cyan-500/10">{t}</span>))}</div>
                                         <div className="mt-5 pt-4 border-t border-cyan-500/10 flex justify-between items-center">
-                                            <span className="text-xs text-gray-500">Coming Soon</span>
+                                            <span className="text-xs text-gray-500">
+                                                {p.link && p.link !== '#' ? (
+                                                    <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                                        <i className="fab fa-github mr-1"></i> View on GitHub
+                                                    </a>
+                                                ) : 'Coming Soon'}
+                                            </span>
+                                            {p.link && p.link !== '#' && (
+                                                <a href={p.link} target="_blank" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
+                                                    <i className="fas fa-arrow-right"></i>
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 ))}
@@ -1071,7 +1091,7 @@
                             </div>
                         </section>
 
-                        {/* CERTIFICATIONS */}
+                        {/* ✅ CERTIFICATIONS - 3 (AWS, IBM, Databricks) */}
                         <section id="certifications" className="py-20 md:py-28">
                             <div className="text-center max-w-2xl mx-auto mb-14">
                                 <span className="text-cyan-400 font-medium text-sm tracking-widest uppercase">Certifications</span>
@@ -1080,15 +1100,42 @@
                             </div>
                             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {[
-                                    { title: 'IBM Data Engineering Professional Certificate', status: 'Planned', icon: 'fa-ibm', field: 'Data Engineering' },
-                                    { title: 'AWS Certified Data Analytics', status: 'Planned', icon: 'fa-aws', field: 'Cloud Data' },
-                                    { title: 'Microsoft Azure Data Engineer (DP-203)', status: 'Planned', icon: 'fa-microsoft', field: 'Data Engineering' }
+                                    { 
+                                        title: 'AWS Certified Data Engineer – Associate', 
+                                        status: 'Planned', 
+                                        icon: 'fa-aws', 
+                                        field: 'Data Engineering',
+                                        description: 'Designing secure data pipelines on AWS'
+                                    },
+                                    { 
+                                        title: 'IBM Data Engineering Professional Certificate', 
+                                        status: 'Planned', 
+                                        icon: 'fa-ibm', 
+                                        field: 'Data Engineering',
+                                        description: 'ETL processes, relational databases, NoSQL'
+                                    },
+                                    { 
+                                        title: 'Databricks Certified Data Engineer Associate', 
+                                        status: 'Planned', 
+                                        icon: 'fa-databricks', 
+                                        field: 'Data Engineering',
+                                        description: 'Big data processing with Apache Spark'
+                                    }
                                 ].map((cert) => (
                                     <div key={cert.title} className="glass rounded-2xl p-6 border border-cyan-500/10 text-center hover:border-cyan-500/30 transition-all">
-                                        <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-4"><i className={`fab ${cert.icon}`}></i></div>
+                                        <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-4">
+                                            <i className={`fab ${cert.icon}`}></i>
+                                        </div>
                                         <h3 className="text-sm font-semibold text-white">{cert.title}</h3>
-                                        <span className="text-xs mt-2 inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">{cert.field}</span>
-                                        <div className="mt-3"><span className="text-xs inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">Planned</span></div>
+                                        <p className="text-xs text-cyan-300 mt-1">{cert.description}</p>
+                                        <span className="text-xs mt-2 inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                            {cert.field}
+                                        </span>
+                                        <div className="mt-3">
+                                            <span className="text-xs inline-block px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                                                {cert.status}
+                                            </span>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
