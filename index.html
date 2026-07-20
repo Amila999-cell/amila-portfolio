@@ -44,26 +44,31 @@
             --shadow: rgba(0, 0, 0, 0.06);
         }
 
-        [data-theme="light"] .gradient-bg {
+        /* ===== FIXED LIGHT THEME - LINKEDIN BROWSER ===== */
+        [data-theme="light"] body,
+        [data-theme="light"] .gradient-bg,
+        [data-theme="light"] .bg-grid-pattern {
             background: #ffffff !important;
         }
 
         [data-theme="light"] .text-white,
         [data-theme="light"] .text-white\/\[0\.6\],
         [data-theme="light"] .text-white\/\[0\.8\],
-        [data-theme="light"] .text-white\/\[0\.2\],
         [data-theme="light"] .text-white\/60,
         [data-theme="light"] .text-white\/80,
-        [data-theme="light"] .text-white\/20 {
+        [data-theme="light"] .hero-text-white,
+        [data-theme="light"] .text-white\/20,
+        [data-theme="light"] .text-white\/\[0\.2\] {
             color: #0f172a !important;
         }
 
-        [data-theme="light"] .hero-text-white {
+        [data-theme="light"] h1,
+        [data-theme="light"] h2,
+        [data-theme="light"] h3,
+        [data-theme="light"] h4,
+        [data-theme="light"] h5,
+        [data-theme="light"] h6 {
             color: #0f172a !important;
-        }
-
-        [data-theme="light"] .text-white\/60 {
-            color: #475569 !important;
         }
 
         [data-theme="light"] .text-gray-300 {
@@ -75,23 +80,17 @@
         [data-theme="light"] .text-gray-500 {
             color: #64748b !important;
         }
-        [data-theme="light"] .text-cyan-300 {
-            color: #0e7490 !important;
-        }
+        [data-theme="light"] .text-cyan-300,
         [data-theme="light"] .text-cyan-400 {
             color: #0e7490 !important;
         }
 
-        [data-theme="light"] .glass {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(8px) !important;
-            border: 1px solid rgba(6, 182, 212, 0.15) !important;
-        }
-
+        [data-theme="light"] .glass,
         [data-theme="light"] .glass-nav {
             background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(12px) !important;
-            border-bottom: 1px solid rgba(6, 182, 212, 0.12) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(6, 182, 212, 0.12) !important;
         }
 
         [data-theme="light"] .project-card {
@@ -203,6 +202,59 @@
             color: #94a3b8 !important;
         }
 
+        [data-theme="light"] .hero-gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 40%, #818cf8 70%, #a78bfa 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        [data-theme="light"] .learning-badge.current {
+            color: #0e7490 !important;
+            background: rgba(6, 182, 212, 0.10) !important;
+            border-color: rgba(6, 182, 212, 0.20) !important;
+        }
+        [data-theme="light"] .learning-badge.plan {
+            color: #b45309 !important;
+            background: rgba(251, 191, 36, 0.10) !important;
+            border-color: rgba(251, 191, 36, 0.20) !important;
+        }
+
+        [data-theme="light"] .theme-toggle {
+            color: #1e293b !important;
+            background: rgba(0, 0, 0, 0.03) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+        [data-theme="light"] .theme-toggle:hover {
+            border-color: #0e7490 !important;
+            background: rgba(14, 116, 144, 0.06) !important;
+        }
+
+        [data-theme="light"] ::-webkit-scrollbar {
+            width: 8px;
+        }
+        [data-theme="light"] ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        [data-theme="light"] ::-webkit-scrollbar-thumb {
+            background: #c1c7cd;
+            border-radius: 10px;
+        }
+        [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+            background: #a0a7ae;
+        }
+
+        [data-theme="light"] .toast-success {
+            background: rgba(16, 185, 129, 0.10) !important;
+            color: #065f46 !important;
+            border: 1px solid rgba(16, 185, 129, 0.20) !important;
+        }
+        [data-theme="light"] .toast-error {
+            background: rgba(239, 68, 68, 0.10) !important;
+            color: #991b1b !important;
+            border: 1px solid rgba(239, 68, 68, 0.20) !important;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
@@ -278,18 +330,6 @@
             background: rgba(251, 191, 36, 0.12);
             color: #fbbf24;
             border: 1px solid rgba(251, 191, 36, 0.2);
-        }
-
-        [data-theme="light"] .learning-badge.current {
-            color: #0e7490;
-            background: rgba(6, 182, 212, 0.1);
-            border-color: rgba(6, 182, 212, 0.2);
-        }
-
-        [data-theme="light"] .learning-badge.plan {
-            color: #b45309;
-            background: rgba(251, 191, 36, 0.1);
-            border-color: rgba(251, 191, 36, 0.2);
         }
 
         .project-card {
@@ -576,6 +616,11 @@
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
+
+        // Detect LinkedIn in-app browser
+        const isLinkedInBrowser = navigator.userAgent.includes('LinkedIn') || 
+                                  navigator.userAgent.includes('linkedin') ||
+                                  navigator.userAgent.includes('LinkedInApp');
 
         const Toast = ({ message, type, show }) => {
             if (!show) return null;
@@ -1194,7 +1239,17 @@
         };
 
         const App = () => {
-            const [theme, setTheme] = useState('dark');
+            // LinkedIn browser එක detect කරලා auto light mode set කරන්න
+            const isLinkedIn = navigator.userAgent.includes('LinkedIn') || 
+                               navigator.userAgent.includes('linkedin') ||
+                               navigator.userAgent.includes('LinkedInApp');
+
+            const [theme, setTheme] = useState(() => {
+                if (isLinkedIn) {
+                    return 'light';
+                }
+                return 'dark';
+            });
             const [currentView, setCurrentView] = useState('home');
             const [activeSection, setActiveSection] = useState('home');
 
